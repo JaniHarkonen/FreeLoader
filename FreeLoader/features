@@ -1,0 +1,71 @@
+*** FreeLoader - FEATURES ***
+
+** Robot actions **
+- Mouse actions
+	-- move to location
+		[assign random error margin to coordinates]
+		[use relative coordinates?]
+		[
+			plot path, [assign smoothness, [randomize smoothness]]
+		]
+		[human mode?]
+	-- click / hold / release
+		[
+			repeat click?, 
+			[
+				assign number of clicks, [randomize number],
+				assign interval, [randomize intervals],
+				randomize click length?
+			]
+		]
+		[
+			assign hold length, [randomize length]
+		]
+	-- scroll
+		[assign scroll direction]
+		[assign scroll speed]
+		[repeat scroll?, [assign number of scrolls, [randomize number], assign interval, [randomize intervals]]]
+	/*-- perform a move set
+		[repeat move set?, [assign number of repeats, [randomize number], assign interval, [randomize intervals]]]*/
+- Keystrokes
+	-- press / hold / release
+		[repeat press?, [assign number of repeats, [randomize number], assign interval, [randomize intervals]]]
+		[assign hold length, [randomize length]]
+	-- use a shortcut
+		[randomize intervals between shortcut key presses?]
+	-- type text
+		[
+			press each key separately?,
+				[
+					assign interval between presses, [randomize interval],
+					separate interval between words?, [randomize interval]
+				]
+			insta-type?
+		]
+- Wait
+	-- assign waiting time
+		[randomize waiting time]
+- Jump to action line
+	-- assign line number
+		[choose random line in range]
+- Run a program from cmd
+	-- assign program path
+		
+
+** User options **
+- Robot
+	-- create a robot
+	-- scrap a robot
+	-- start a robot
+	-- interrupt a robot
+	-- resume a robot
+	-- shutdown a robot
+- Record user actions
+	-- set recording polling rate
+	-- set recording hot-keys
+- Robot action
+	-- add a robot action
+	-- delete a robot action
+	-- modify a robot action
+	-- create / edit / remove a keyboard shortcut
+	-- create / edit / remove an action set
