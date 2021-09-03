@@ -1,6 +1,5 @@
 package freeloader.robot.actions.values;
 
-import java.awt.MouseInfo;
 import java.util.Random;
 
 import freeloader.robot.FLRobotContext;
@@ -46,7 +45,7 @@ public class FLInt extends FLValue<Integer> {
 	public Integer getValue(FLRobotContext rc) {
 		int v = value;
 		
-		if( isRelative ) v = MouseInfo.getPointerInfo()
+		if( isRelative ) v = (int) rc.memoryGet("temp") + v;
 		
 		if( isRandomized )
 		{

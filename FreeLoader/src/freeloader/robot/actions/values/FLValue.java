@@ -23,4 +23,9 @@ public abstract class FLValue<T> {
 	public T getValue(FLRobotContext rtext) {
 		return null;
 	}
+	
+		// Returns the contained value without modifications
+	public T getValueUnmodded() {
+		return value;
+	}
 }

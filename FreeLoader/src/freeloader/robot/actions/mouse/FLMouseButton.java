@@ -1,33 +1,32 @@
-package freeloader.robot.actions;
-
-import java.awt.Robot;
+package freeloader.robot.actions.mouse;
 
 import freeloader.robot.FLRobotContext;
+import freeloader.robot.actions.FLRobotAction;
 
-public class FLActionMouseClick extends FLRobotAction {
+public abstract class FLMouseButton extends FLRobotAction {
 	
 		// Mouse button captions
 	public static String[] BUTTON_CAPTIONS = {"Left", "Middle", "Right"};
 	
 	
-		// Mouse button to click (from InputEvent)
-	private int mouseButton;
+		// Mouse button to listen to (from InputEvent)
+	protected int mouseButton;
+	
+		// Description suffix
+	protected String descriptionSuffix;
 	
 
-	public FLActionMouseClick() {
+	protected FLMouseButton() {
 		super();
 		
 		mouseButton = -1;
-		description = "Mouse click";
+		descriptionSuffix = "";
 	}
 	
 	
 	@Override
 	public void perform(FLRobotContext rc) {
-		Robot bot = rc.getRobot();
 		
-		bot.mousePress(mouseButton);
-		bot.mouseRelease(mouseButton);
 	}
 	
 		// Sets the mouse button to listen to (from InputEvent)
@@ -39,6 +38,6 @@ public class FLActionMouseClick extends FLRobotAction {
 	
 		// Sets the description of the action by mouse button
 	public void updateDescription() {
-		setDescription(BUTTON_CAPTIONS[mouseButton] + " mouse click");
+		setDescription(BUTTON_CAPTIONS[mouseButton] + " " + descriptionSuffix);
 	}
 }

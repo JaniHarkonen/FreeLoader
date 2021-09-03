@@ -1,6 +1,7 @@
 package freeloader.robot.actions;
 
 import freeloader.robot.FLRobotContext;
+import freeloader.robot.actions.values.FLInt;
 
 public abstract class FLRobotAction {
 	
@@ -41,5 +42,15 @@ public abstract class FLRobotAction {
 		// Returns the description of the action
 	public String getDescription() {
 		return description;
+	}
+	
+		// UTILITY: Thread sleeping (separated to avoid multiple try-catch)
+		// via FLInts
+	public static void sleep(FLInt ms, FLRobotContext rc) {
+		try
+		{
+			Thread.sleep(ms.getValue(rc));
+			
+		} catch (InterruptedException e) { e.printStackTrace(); }
 	}
 }
