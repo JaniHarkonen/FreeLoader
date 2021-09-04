@@ -1,7 +1,6 @@
 package freeloader.robot.actions.keyboard;
 
 import freeloader.robot.FLRobotContext;
-import freeloader.robot.actions.values.FLInt;
 
 public abstract class FLActionKeyRelease extends FLKeyboardKey {
 	

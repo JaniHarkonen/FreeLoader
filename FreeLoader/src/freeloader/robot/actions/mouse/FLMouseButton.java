@@ -19,7 +19,7 @@ public abstract class FLMouseButton extends FLRobotAction {
 	protected FLMouseButton() {
 		super();
 		
-		mouseButton = -1;
+		mouseButton = 0;
 		descriptionSuffix = "";
 	}
 	

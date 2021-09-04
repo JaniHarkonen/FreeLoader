@@ -16,7 +16,7 @@ public class FLRobotContext {
 	private Robot robot;
 	
 		// Robot memory
-	protected Map<String, Object> memory;
+	private Map<String, Object> memory;
 	
 		// Robot actions
 	public ArrayList<FLRobotAction> actions;

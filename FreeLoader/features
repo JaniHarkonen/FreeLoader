@@ -69,3 +69,12 @@
 	-- modify a robot action
 	-- create / edit / remove a keyboard shortcut
 	-- create / edit / remove an action set
+	
+	GUI DESIGN
+	
+window: frame, toolbar, tabs
+tabs: tabbedpane (tab), inform robotmanager
+tab: actionlist, settings, splitpane
+actionlist: list, separation
+settings
+static robotmanager
