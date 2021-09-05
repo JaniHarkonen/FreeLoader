@@ -1,17 +1,21 @@
 package freeloader.gui.window;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 
-import freeloader.gui.FLWindow;
+import javax.swing.JPanel;
+
+import freeloader.FLAppContext;
 
 public abstract class FLElement {
 
-		// Reference to the host window
-	private FLWindow hostWindow;
+		// Reference to the application context this element is
+		// operating in
+	protected FLAppContext hostContext;
 	
 	
-	public FLElement(FLWindow host) {
-		hostWindow = host;
+	public FLElement(FLAppContext host) {
+		hostContext = host;
 	}
 	
 	
@@ -21,8 +25,17 @@ public abstract class FLElement {
 		return null;
 	}
 	
-		// Returns the host window
-	public FLWindow getHostWindow() {
-		return hostWindow;
+		// Returns the context this element is operating in
+	public FLAppContext getHostWindow() {
+		return hostContext;
+	}
+	
+	
+		// UTILITY: Creates a default wrapper (JPanel with BorderLayout)
+	public static JPanel createWrapper() {
+		JPanel wrapper = new JPanel();
+		wrapper.setLayout(new BorderLayout());
+		
+		return wrapper;
 	}
 }

@@ -77,4 +77,4 @@ tabs: tabbedpane (tab), inform robotmanager
 tab: actionlist, settings, splitpane
 actionlist: list, separation
 settings
-static robotmanager
+FLAppContext

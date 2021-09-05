@@ -8,11 +8,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import freeloader.gui.FLWindow;
+import freeloader.FLAppContext;
 
 public class FLElementToolbar extends FLElement {
 	
-	public FLElementToolbar(FLWindow host) {
+	public FLElementToolbar(FLAppContext host) {
 		super(host);
 	}
 	

@@ -1,17 +1,24 @@
 package freeloader.gui.settings;
 
-import java.awt.BorderLayout;
-
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import freeloader.FLAppContext;
+
 public class FLSettingsMouseRelease extends FLSettings {
+	
+	public FLSettingsMouseRelease(FLAppContext host) {
+		super(host);
+	}
+	
 
 	@Override
-	public JPanel getGUIComponent() {
-		JPanel comp = new JPanel();
-		comp.setLayout(new BorderLayout());
+	public JPanel getElement() {
+		JPanel wrapper = createWrapper();
 		
+		JButton btn = new JButton("LOL");
 		
-		return comp;
+		wrapper.add(btn);
+		return wrapper;
 	}
 }

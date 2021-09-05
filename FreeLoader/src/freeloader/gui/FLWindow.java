@@ -1,25 +1,18 @@
 package freeloader.gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.SwingConstants;
 
+import freeloader.FLAppContext;
+import freeloader.gui.window.FLElementTabs;
 import freeloader.gui.window.FLElementToolbar;
 import freeloader.robot.FLRobot;
-import freeloader.robot.FLRobotManager;
 import freeloader.robot.actions.FLRobotAction;
-import freeloader.robot.actions.mouse.FLActionMouseClick;
+import freeloader.robot.actions.mouse.FLActionMouseRelease;
 
 public class FLWindow {
 	
@@ -36,46 +29,53 @@ public class FLWindow {
 	public static int WINDOW_HEIGHT = 600;
 	
 		// Manager for all the available robots
-	private FLRobotManager robotManager;
+	private FLAppContext applicationContext;
 	
-		// Currently open robot
-	private FLRobot currentRobot;
+		// Main window
+	private static JFrame MAIN_WINDOW;
 
 	
 	public FLWindow() {
-		robotManager = new FLRobotManager();
+		applicationContext = new FLAppContext(this);
+		
 		ArrayList<FLRobot> bots = new ArrayList<FLRobot>();
-		FLRobot bot = new FLRobot();
-		bots.add(bot);
-		bot.setName("Robot 1");
-		ArrayList<FLRobotAction> acts = new ArrayList<FLRobotAction>();
-		FLActionMouseClick mc = new FLActionMouseClick();
-		mc.updateDescription();
-		acts.add(mc);
-		bot.setActions(acts);
-		bots.add(new FLRobot());
-		bots.get(1).setName("Robot 2");
-		robotManager.setRobots(bots);
+		bots.add(DEBUGgenerateRandomRobot());
+		bots.add(DEBUGgenerateRandomRobot());
+		applicationContext.setRobots(bots);
+		applicationContext.setSelectedRobot(bots.get(0));
 		createMainWindow();
 	}
 	
 	
 		// Creates the main window
 	private void createMainWindow() {
-		JFrame f = new JFrame(APP_NAME + " " + APP_VERSION);
-		JPanel cont = new JPanel();
-		cont.setLayout(new BorderLayout());
-		FLElementToolbar tb = new FLElementToolbar(this);
-		cont.add(tb.getElement(), BorderLayout.PAGE_START);
-	    //f.add(createRobotTabs());
-		f.add(cont);
-	    f.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	    f.setVisible(true);
+		MAIN_WINDOW = new JFrame(APP_NAME + " " + APP_VERSION);
+		
+		draw();
+		
+		MAIN_WINDOW.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		MAIN_WINDOW.setVisible(true);
+	}
+	
+	private FLRobot DEBUGgenerateRandomRobot() {
+		Random rand = new Random();
+		
+		FLRobot bot = new FLRobot();
+		bot.setName("Robot " + Math.abs(rand.nextInt() % 10));
+		
+		ArrayList<FLRobotAction> acts = new ArrayList<FLRobotAction>();
+		FLActionMouseRelease act = new FLActionMouseRelease();
+		act.updateDescription();
+		acts.add(act);
+		
+		bot.setActions(acts);
+		
+		return bot;
 	}
 	
 		// Creates tabs for all the available robots and adds
 		// them to a given JTabbedPane
-	private JPanel createRobotTabs() {
+	/*private JPanel createRobotTabs() {
 		JPanel jp = new JPanel();
 		jp.setLayout(new BorderLayout());
 		JTabbedPane tp = new JTabbedPane();
@@ -96,10 +96,10 @@ public class FLWindow {
 		jp.add(tp);
 		//return tp;
 		return jp;
-	}
+	}*/
 	
 		// Creates a tab (JPanel) for a robot
-	private JPanel createSingleRobotTab(FLRobot bot) {
+	/*private JPanel createSingleRobotTab(FLRobot bot) {
 		JPanel jp = new JPanel();
 		jp.setLayout(new BorderLayout());
 		
@@ -137,10 +137,38 @@ public class FLWindow {
 		jp.add(sp);
 		
 		return jp;
-	}
+	}*/
 	
 		// Returns the RobotManager
-	public FLRobotManager getRobotManager() {
+	/*public FLRobotManager getRobotManager() {
 		
+	}*/
+	
+		// Draws the application window with 'redraw(false)'
+	public void draw() {
+		redraw(false);
+	}
+	
+		// Redraws the application window
+		// 're' determines whether to revalidate and repaint at the end
+	public void redraw(boolean re) {
+		
+		if( re ) MAIN_WINDOW.getContentPane().removeAll();
+		
+		JPanel container = new JPanel();
+		container.setLayout(new BorderLayout());
+		
+		FLElementToolbar tbar = new FLElementToolbar(applicationContext);
+		FLElementTabs tabs = new FLElementTabs(applicationContext);
+		container.add(tbar.getElement(), BorderLayout.PAGE_START);
+		container.add(tabs.getElement());
+		
+		MAIN_WINDOW.add(container);
+		
+		if( re )
+		{
+			MAIN_WINDOW.revalidate();
+			MAIN_WINDOW.repaint();
+		}
 	}
 }
