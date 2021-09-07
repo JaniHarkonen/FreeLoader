@@ -36,7 +36,7 @@ public class FLElementToolbar extends FLElement {
 		JButton btn = new JButton(caption);
 		btn.addMouseListener(new MouseAdapter() {
 			
-			public void mouseClicked(MouseEvent evt) {
+			public void mouseReleased(MouseEvent evt) {
 				action.run();
 			}
 		});

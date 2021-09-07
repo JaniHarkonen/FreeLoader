@@ -22,14 +22,14 @@ public class FLElementTab extends FLElement {
 		
 		JSplitPane sp = new JSplitPane(SwingConstants.VERTICAL);
 		FLElementActionList al = new FLElementActionList(hostContext);
-		//FLSettings sets = hostContext.getSelectedActionSettings();
-		JPanel sets = new JPanel();
-		sets.setLayout(new BorderLayout());
+		JPanel jp_sets = new JPanel();
+		jp_sets.setLayout(new BorderLayout());
+		hostContext.setSelectedActionSettingsPanel(jp_sets);
 		
 		sp.add(al.getElement(), JSplitPane.LEFT);
-		sp.add(sets, JSplitPane.RIGHT);
+		sp.add(jp_sets, JSplitPane.RIGHT);
 		sp.setContinuousLayout(true);
-		sp.setDividerLocation(400);
+		sp.setDividerLocation(250);
 		
 		wrapper.add(sp);
 		return wrapper;

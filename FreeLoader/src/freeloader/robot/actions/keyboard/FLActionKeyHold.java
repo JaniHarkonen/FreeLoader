@@ -3,13 +3,13 @@ package freeloader.robot.actions.keyboard;
 import freeloader.robot.FLRobotContext;
 import freeloader.robot.actions.values.FLInt;
 
-public abstract class FLActionKeyHold extends FLKeyboardKey {
+public class FLActionKeyHold extends FLKeyboardKey {
 	
 		// Length of the hold (ms)
 	private FLInt length;
 	
 
-	protected FLActionKeyHold() {
+	public FLActionKeyHold() {
 		super();
 		
 		descriptionSuffix = " held";

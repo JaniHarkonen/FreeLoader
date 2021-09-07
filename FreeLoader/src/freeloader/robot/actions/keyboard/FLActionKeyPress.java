@@ -5,7 +5,7 @@ import java.awt.Robot;
 import freeloader.robot.FLRobotContext;
 import freeloader.robot.actions.values.FLInt;
 
-public abstract class FLActionKeyPress extends FLKeyboardKey {
+public class FLActionKeyPress extends FLKeyboardKey {
 	
 		// Number of times to repeat the press
 	private FLInt repeat;
@@ -17,7 +17,7 @@ public abstract class FLActionKeyPress extends FLKeyboardKey {
 	private FLInt length;
 	
 
-	protected FLActionKeyPress() {
+	public FLActionKeyPress() {
 		super();
 		
 		descriptionSuffix = " pressed";

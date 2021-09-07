@@ -25,6 +25,7 @@ public class FLActionMouseMove extends FLRobotAction {
 		locationX = new FLInt(0);
 		locationY = new FLInt(0);
 		enablePathing = false;
+		description = "Mouse move";
 	}
 	
 	

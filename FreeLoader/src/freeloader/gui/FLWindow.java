@@ -11,8 +11,17 @@ import freeloader.FLAppContext;
 import freeloader.gui.window.FLElementTabs;
 import freeloader.gui.window.FLElementToolbar;
 import freeloader.robot.FLRobot;
+import freeloader.robot.actions.FLActionExec;
+import freeloader.robot.actions.FLActionWait;
 import freeloader.robot.actions.FLRobotAction;
+import freeloader.robot.actions.keyboard.FLActionKeyHold;
+import freeloader.robot.actions.keyboard.FLActionKeyPress;
+import freeloader.robot.actions.keyboard.FLActionKeyRelease;
+import freeloader.robot.actions.mouse.FLActionMouseClick;
+import freeloader.robot.actions.mouse.FLActionMouseHold;
+import freeloader.robot.actions.mouse.FLActionMouseMove;
 import freeloader.robot.actions.mouse.FLActionMouseRelease;
+import freeloader.robot.actions.mouse.FLActionMouseScroll;
 
 public class FLWindow {
 	
@@ -51,7 +60,15 @@ public class FLWindow {
 	private void createMainWindow() {
 		MAIN_WINDOW = new JFrame(APP_NAME + " " + APP_VERSION);
 		
-		draw();
+		JPanel container = new JPanel();
+		container.setLayout(new BorderLayout());
+		
+		FLElementToolbar tbar = new FLElementToolbar(applicationContext);
+		FLElementTabs tabs = new FLElementTabs(applicationContext);
+		container.add(tbar.getElement(), BorderLayout.PAGE_START);
+		container.add(tabs.getElement());
+		
+		MAIN_WINDOW.add(container);
 		
 		MAIN_WINDOW.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		MAIN_WINDOW.setVisible(true);
@@ -64,111 +81,37 @@ public class FLWindow {
 		bot.setName("Robot " + Math.abs(rand.nextInt() % 10));
 		
 		ArrayList<FLRobotAction> acts = new ArrayList<FLRobotAction>();
-		FLActionMouseRelease act = new FLActionMouseRelease();
+		FLActionMouseHold act = new FLActionMouseHold();
+		FLActionMouseRelease act2 = new FLActionMouseRelease();
+		FLActionMouseMove act3 = new FLActionMouseMove();
+		FLActionMouseClick act4 = new FLActionMouseClick();
+		FLActionMouseScroll act5 = new FLActionMouseScroll();
+		FLActionKeyPress act6 = new FLActionKeyPress();
+		FLActionKeyHold act7 = new FLActionKeyHold();
+		FLActionKeyRelease act8 = new FLActionKeyRelease();
+		FLActionWait act9 = new FLActionWait();
+		FLActionExec act10 = new FLActionExec();
 		act.updateDescription();
+		act2.updateDescription();
+		act4.updateDescription();
+		act5.updateDescription();
+		act6.updateDescription();
+		act7.updateDescription();
+		act8.updateDescription();
+		act9.updateDescription();
 		acts.add(act);
+		acts.add(act2);
+		acts.add(act3);
+		acts.add(act4);
+		acts.add(act5);
+		acts.add(act6);
+		acts.add(act7);
+		acts.add(act8);
+		acts.add(act9);
+		acts.add(act10);
 		
 		bot.setActions(acts);
 		
 		return bot;
-	}
-	
-		// Creates tabs for all the available robots and adds
-		// them to a given JTabbedPane
-	/*private JPanel createRobotTabs() {
-		JPanel jp = new JPanel();
-		jp.setLayout(new BorderLayout());
-		JTabbedPane tp = new JTabbedPane();
-		
-		for( FLRobot bot : robotManager.getRobots() )
-		tp.add(bot.getName(), createSingleRobotTab(bot));
-		
-		JPanel jp_btn = new JPanel();
-		jp_btn.setLayout(new FlowLayout());
-		JButton btn = new JButton("lol");
-		JButton btn2 = new JButton("nother");
-		//btn.setBounds(0,0,120,24);
-		//btn.setVisible(true);
-	
-		jp_btn.add(btn);
-		jp_btn.add(btn2);
-		jp.add(jp_btn, BorderLayout.PAGE_START);
-		jp.add(tp);
-		//return tp;
-		return jp;
-	}*/
-	
-		// Creates a tab (JPanel) for a robot
-	/*private JPanel createSingleRobotTab(FLRobot bot) {
-		JPanel jp = new JPanel();
-		jp.setLayout(new BorderLayout());
-		
-			// Robot actions - settings
-		JPanel jp_setting = new JPanel();
-		
-			// Robot actions - actions
-		ArrayList<FLRobotAction> actions = bot.getRobotContext().actions;
-		int s = actions.size();
-		String[] items = new String[s];
-		
-			// Get action descriptions
-		for( int i = 0; i < s; i++ )
-		items[i] = actions.get(i).getDescription();
-		
-		JList jl = new JList(items);
-		jl.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent evt) {
-				
-			}
-		});
-		JScrollPane scrp = new JScrollPane();
-		scrp.setViewportView(jl);
-		JPanel jp_list = new JPanel();
-		jp_list.setLayout(new BorderLayout());
-		jp_list.add(scrp);
-		
-		
-			// Split view
-		JSplitPane sp = new JSplitPane(SwingConstants.VERTICAL);
-		sp.add(jp_list, JSplitPane.LEFT);
-		sp.add(jp_setting, JSplitPane.RIGHT);
-		sp.setContinuousLayout(true);
-		sp.setDividerLocation(400);
-		jp.add(sp);
-		
-		return jp;
-	}*/
-	
-		// Returns the RobotManager
-	/*public FLRobotManager getRobotManager() {
-		
-	}*/
-	
-		// Draws the application window with 'redraw(false)'
-	public void draw() {
-		redraw(false);
-	}
-	
-		// Redraws the application window
-		// 're' determines whether to revalidate and repaint at the end
-	public void redraw(boolean re) {
-		
-		if( re ) MAIN_WINDOW.getContentPane().removeAll();
-		
-		JPanel container = new JPanel();
-		container.setLayout(new BorderLayout());
-		
-		FLElementToolbar tbar = new FLElementToolbar(applicationContext);
-		FLElementTabs tabs = new FLElementTabs(applicationContext);
-		container.add(tbar.getElement(), BorderLayout.PAGE_START);
-		container.add(tabs.getElement());
-		
-		MAIN_WINDOW.add(container);
-		
-		if( re )
-		{
-			MAIN_WINDOW.revalidate();
-			MAIN_WINDOW.repaint();
-		}
 	}
 }

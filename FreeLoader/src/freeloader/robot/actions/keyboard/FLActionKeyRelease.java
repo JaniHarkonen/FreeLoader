@@ -2,9 +2,9 @@ package freeloader.robot.actions.keyboard;
 
 import freeloader.robot.FLRobotContext;
 
-public abstract class FLActionKeyRelease extends FLKeyboardKey {
+public class FLActionKeyRelease extends FLKeyboardKey {
 	
-	protected FLActionKeyRelease() {
+	public FLActionKeyRelease() {
 		super();
 		
 		descriptionSuffix = " released";

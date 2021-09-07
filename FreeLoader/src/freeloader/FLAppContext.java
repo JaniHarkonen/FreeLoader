@@ -2,6 +2,8 @@ package freeloader;
 
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 import freeloader.gui.FLWindow;
 import freeloader.gui.settings.FLSettings;
 import freeloader.robot.FLRobot;
@@ -14,8 +16,8 @@ public class FLAppContext {
 		// Currently open robot
 	private FLRobot selectedRobot;
 	
-		// Settings for the currently open action
-	private FLSettings selectedActionSettings;
+		// JPanel containing the Settings for the currently open action
+	private JPanel selectedActionSettingsPanel;
 	
 		// Window the application context is hosted in
 	private FLWindow hostWindow;
@@ -46,14 +48,23 @@ public class FLAppContext {
 		selectedRobot = bot;
 	}
 	
-		// Returns a reference to the settings of the currently open action
-	public FLSettings getSelectedActionSettings() {
-		return selectedActionSettings;
+		// Returns a reference to the JPanel containing the settings
+		// of the currently open action
+	public JPanel getSelectedActionSettingsPanel() {
+		return selectedActionSettingsPanel;
 	}
 	
 		// Sets the settings for the currently open action
 	public void setSelectedActionSettings(FLSettings sets) {
-		selectedActionSettings = sets;
-		hostWindow.redraw(true);
+		selectedActionSettingsPanel.removeAll();
+		selectedActionSettingsPanel.add(sets.getElement());
+		selectedActionSettingsPanel.revalidate();
+		selectedActionSettingsPanel.repaint();
+	}
+	
+		// Sets the JPanel containing the settings for the currently
+		// open action
+	public void setSelectedActionSettingsPanel(JPanel jp) {
+		selectedActionSettingsPanel = jp;
 	}
 }

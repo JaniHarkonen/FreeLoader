@@ -36,7 +36,7 @@ public class FLElementActionList extends FLElement {
 		JList list = new JList(dscrs);
 		list.addMouseListener(new MouseAdapter() {
 			
-			public void mouseClicked(MouseEvent evt) {
+			public void mouseReleased(MouseEvent evt) {
 				onListElementClick(list.getSelectedIndex());
 			}
 		});

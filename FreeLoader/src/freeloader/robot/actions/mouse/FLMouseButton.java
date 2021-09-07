@@ -36,6 +36,11 @@ public abstract class FLMouseButton extends FLRobotAction {
 		updateDescription();
 	}
 	
+		// Returns the mouse button to listen to (from InputEvent)
+	public int getMouseButton() {
+		return mouseButton;
+	}
+	
 		// Sets the description of the action by mouse button
 	public void updateDescription() {
 		setDescription(BUTTON_CAPTIONS[mouseButton] + " " + descriptionSuffix);

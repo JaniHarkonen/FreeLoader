@@ -15,7 +15,8 @@ public class FLActionWait extends FLRobotAction {
 	public FLActionWait() {
 		super();
 		
-		descriptionPrefix = "Wait";
+		time = new FLInt(0);
+		descriptionPrefix = "Wait ";
 	}
 	
 	
@@ -31,6 +32,6 @@ public class FLActionWait extends FLRobotAction {
 	
 		// Updates the description text
 	public void updateDescription() {
-		setDescription(descriptionPrefix + time.getValueUnmodded());
+		setDescription(descriptionPrefix + time.getValueUnmodded() + " MS");
 	}
 }
