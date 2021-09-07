@@ -46,6 +46,8 @@ public class FLElementActionList extends FLElement {
 		sp.setViewportView(list);
 		
 		wrapper.add(sp);
+		
+		//hostContext.setActionList
 		return wrapper;
 	}
 	
@@ -55,5 +57,7 @@ public class FLElementActionList extends FLElement {
 		FLSettings sets = FLSettings.buildSettings(bot.actions.get(index), hostContext);
 		
 		hostContext.setSelectedActionSettings(sets);
+		hostContext.guiContext.put("selected-action-index", index);
+		//hostContext.guiContext.putElement("open-settings", sets);
 	}
 }

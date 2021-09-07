@@ -3,7 +3,6 @@ package freeloader.gui.settings.mouse;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,7 +10,6 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 import freeloader.FLAppContext;
-import freeloader.gui.settings.FLSettings;
 import freeloader.robot.actions.FLRobotAction;
 
 public class FLSettingsMouseScroll extends FLSettingsMouse {

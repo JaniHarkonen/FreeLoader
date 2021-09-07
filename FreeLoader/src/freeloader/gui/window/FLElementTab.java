@@ -24,7 +24,7 @@ public class FLElementTab extends FLElement {
 		FLElementActionList al = new FLElementActionList(hostContext);
 		JPanel jp_sets = new JPanel();
 		jp_sets.setLayout(new BorderLayout());
-		hostContext.setSelectedActionSettingsPanel(jp_sets);
+		hostContext.guiContext.put("open-settings-panel", jp_sets);
 		
 		sp.add(al.getElement(), JSplitPane.LEFT);
 		sp.add(jp_sets, JSplitPane.RIGHT);

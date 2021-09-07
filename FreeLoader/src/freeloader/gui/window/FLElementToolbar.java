@@ -24,9 +24,10 @@ public class FLElementToolbar extends FLElement {
 		fl.setVgap(0);
 		container.setLayout(fl);
 		
-		addOption(container, "Add action", () -> { System.out.println("add action"); });
-		addOption(container, "Remove action", () -> { System.out.println("remove action"); });
-		addOption(container, "Add robot", () -> { System.out.println("add robot"); });
+		addOption(container, "Add action", () -> { OPTIONaddAction(); });
+		addOption(container, "Remove action", () -> { OPTIONremoveAction(); });
+		addOption(container, "Add robot", () -> { OPTIONaddRobot(); });
+		addOption(container, "Delete robot", () -> { OPTIONdeleteRobot(); });
 		
 		return container;
 	}
@@ -42,5 +43,32 @@ public class FLElementToolbar extends FLElement {
 		});
 		
 		jp.add(btn);
+	}
+	
+		// OPTION: Add action
+	private void OPTIONaddAction() {
+		
+	}
+	
+		// OPTION: Remove action
+	private void OPTIONremoveAction() {
+		System.out.println("remove action");
+		
+		int index = (int) hostContext.guiContext.get("selected-action-index");
+		hostContext.getSelectedRobot().getRobotContext().actions.remove(index);
+	}
+	
+		// OPTION: Add robot
+	private void OPTIONaddRobot() {
+		System.out.println("add robot");
+		
+		
+	}
+	
+		// OPTION: Delete robot
+	private void OPTIONdeleteRobot() {
+		System.out.println("delete robot");
+		
+		
 	}
 }
