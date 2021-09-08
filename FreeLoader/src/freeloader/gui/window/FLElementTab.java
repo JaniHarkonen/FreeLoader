@@ -8,11 +8,21 @@ import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
 import freeloader.FLAppContext;
+import freeloader.robot.FLRobot;
 
 public class FLElementTab extends FLElement {
 	
-	public FLElementTab(FLAppContext host) {
+		// Robot who's tab this is
+	private FLRobot ownerRobot;
+	
+	
+	private FLElementTab(FLAppContext host) {
 		super(host);
+	}
+	
+	public FLElementTab(FLAppContext host, FLRobot owner) {
+		super(host);
+		ownerRobot = owner;
 	}
 	
 
@@ -21,10 +31,10 @@ public class FLElementTab extends FLElement {
 		JPanel wrapper = createWrapper();
 		
 		JSplitPane sp = new JSplitPane(SwingConstants.VERTICAL);
-		FLElementActionList al = new FLElementActionList(hostContext);
+		FLElementActionList al = new FLElementActionList(hostContext, ownerRobot);
 		JPanel jp_sets = new JPanel();
 		jp_sets.setLayout(new BorderLayout());
-		hostContext.guiContext.put("open-settings-panel", jp_sets);
+		hostContext.guiContext.put("open-settings-panel__" + ownerRobot.getName(), jp_sets);
 		
 		sp.add(al.getElement(), JSplitPane.LEFT);
 		sp.add(jp_sets, JSplitPane.RIGHT);
@@ -32,6 +42,7 @@ public class FLElementTab extends FLElement {
 		sp.setDividerLocation(250);
 		
 		wrapper.add(sp);
+		hostContext.guiContext.put("open-tab-panel", sp);
 		return wrapper;
 	}
 }

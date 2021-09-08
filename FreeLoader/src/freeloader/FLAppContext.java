@@ -51,7 +51,9 @@ public class FLAppContext {
 	
 		// Sets the settings for the currently open action
 	public void setSelectedActionSettings(FLSettings sets) {
-		JPanel jp = (JPanel) guiContext.get("open-settings-panel");
+		JPanel jp = (JPanel) guiContext.get("open-settings-panel__" + selectedRobot.getName());
+		if( jp == null ) return;
+		
 		jp.removeAll();
 		jp.add(sets.getElement());
 		jp.revalidate();

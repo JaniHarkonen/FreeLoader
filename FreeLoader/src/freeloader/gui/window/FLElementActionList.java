@@ -11,13 +11,23 @@ import javax.swing.JScrollPane;
 
 import freeloader.FLAppContext;
 import freeloader.gui.settings.FLSettings;
+import freeloader.robot.FLRobot;
 import freeloader.robot.FLRobotContext;
 import freeloader.robot.actions.FLRobotAction;
 
 public class FLElementActionList extends FLElement {
+	
+		// Robot who's actions are listed here
+	private FLRobot ownerRobot;
+	
 
-	public FLElementActionList(FLAppContext host) {
+	private FLElementActionList(FLAppContext host) {
 		super(host);
+	}
+	
+	public FLElementActionList(FLAppContext host, FLRobot owner) {
+		super(host);
+		ownerRobot = owner;
 	}
 	
 	
@@ -26,7 +36,9 @@ public class FLElementActionList extends FLElement {
 		JPanel wrapper = createWrapper();
 		
 			// Get action descriptions for the currently open robot
-		ArrayList<FLRobotAction> acts = hostContext.getSelectedRobot().getRobotContext().actions;
+		//ArrayList<FLRobotAction> acts = hostContext.getSelectedRobot().getRobotContext().actions;
+		//System.out.println(hostContext.getSelectedRobot().getName());
+		ArrayList<FLRobotAction> acts = ownerRobot.getRobotContext().actions;
 		int s = acts.size();
 		String[] dscrs = new String[s];
 		for( int i = 0; i < s; i++ )
@@ -47,7 +59,8 @@ public class FLElementActionList extends FLElement {
 		
 		wrapper.add(sp);
 		
-		//hostContext.setActionList
+		hostContext.guiContext.put("action-list-panel", wrapper);
+		hostContext.guiContext.put("action-list", this);
 		return wrapper;
 	}
 	

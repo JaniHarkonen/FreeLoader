@@ -49,7 +49,11 @@ public class FLWindow {
 		
 		ArrayList<FLRobot> bots = new ArrayList<FLRobot>();
 		bots.add(DEBUGgenerateRandomRobot());
-		bots.add(DEBUGgenerateRandomRobot());
+		FLRobot bot = DEBUGgenerateRandomRobot();
+		bot.getRobotContext().actions.remove(0);
+		bot.getRobotContext().actions.remove(0);
+		bot.getRobotContext().actions.remove(0);
+		bots.add(bot);
 		applicationContext.setRobots(bots);
 		applicationContext.setSelectedRobot(bots.get(0));
 		createMainWindow();

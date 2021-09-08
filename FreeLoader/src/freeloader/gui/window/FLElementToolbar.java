@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import freeloader.FLAppContext;
+import freeloader.FLGuiContext;
 
 public class FLElementToolbar extends FLElement {
 	
@@ -52,10 +53,18 @@ public class FLElementToolbar extends FLElement {
 	
 		// OPTION: Remove action
 	private void OPTIONremoveAction() {
-		System.out.println("remove action");
+		FLGuiContext guic = hostContext.guiContext;
 		
-		int index = (int) hostContext.guiContext.get("selected-action-index");
+			// Remove action from the host robot
+		int index = (int) guic.get("selected-action-index");
 		hostContext.getSelectedRobot().getRobotContext().actions.remove(index);
+		
+			// Remove action from the action list
+		JPanel jp = (JPanel) guic.get("action-list-panel");
+		jp.removeAll();
+		jp.add(((FLElementActionList) guic.get("action-list")).getElement());
+		jp.revalidate();
+		jp.repaint();
 	}
 	
 		// OPTION: Add robot
