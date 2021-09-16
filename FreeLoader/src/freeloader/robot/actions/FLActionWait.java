@@ -34,4 +34,9 @@ public class FLActionWait extends FLRobotAction {
 	public void updateDescription() {
 		setDescription(descriptionPrefix + time.getValueUnmodded() + " MS");
 	}
+	
+		// Returns the number of milliseconds that should be waited for
+	public FLInt getWaitTime() {
+		return time;
+	}
 }

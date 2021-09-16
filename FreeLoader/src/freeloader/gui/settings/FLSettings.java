@@ -3,6 +3,8 @@ package freeloader.gui.settings;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -60,7 +62,7 @@ public abstract class FLSettings extends FLElement {
 		// The method to be performed upon changing the settings of the
 		// underlying action
 		// (TO BE OVERRIDDEN)
-	public void updateAction() {
+	public void updateAction(Object o) {
 	}
 	
 		// Sets the underlying action
@@ -212,5 +214,11 @@ public abstract class FLSettings extends FLElement {
 		menu.add(cb);
 		menu.setMaximumSize(new Dimension(Integer.MAX_VALUE, menu.getPreferredSize().height));
 		return menu;
+	}
+	
+		// UTILITY: Extracts the JComboBox from a drop menu created with
+		// 'createDropMenu'
+	public static JComboBox getComboBoxFromDropMenu(JPanel jp) {
+		return (JComboBox) jp.getComponents()[1];
 	}
 }

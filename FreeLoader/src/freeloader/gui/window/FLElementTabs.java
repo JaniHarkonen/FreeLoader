@@ -23,24 +23,29 @@ public class FLElementTabs extends FLElement {
 		
 		JTabbedPane tp = new JTabbedPane();
 		for( FLRobot bot : hostContext.getRobots() )
-		{
-			//System.out.println(bot.getName());
-			tp.add(bot.getName(), new FLElementTab(hostContext, bot).getElement());
-		}
+		tp.add(bot.getName(), new FLElementTab(hostContext, bot).getElement());
 		
 		tp.addChangeListener(new ChangeListener() {
+			
 			public void stateChanged(ChangeEvent e) {
-				hostContext.setSelectedRobot(hostContext.getRobots().get(tp.getSelectedIndex()));
-				tp.getTabComponentAt(tp.getSelectedIndex());
-				JPanel tab = (JPanel) hostContext.guiContext.get("open-tab-panel");
-				if( tab == null ) return;
-				
-				tab.revalidate();
-				tab.repaint();
+				changeTab(tp);
 			}
 		});
 		
 		wrapper.add(tp);
 		return wrapper;
+	}
+	
+		// Upon changing tabs
+	private void changeTab(JTabbedPane tp) {
+		System.out.println(tp.getTitleAt(tp.getSelectedIndex()));
+		hostContext.setSelectedRobot(hostContext.getRobots().get(tp.getSelectedIndex()));
+		//tp.getTabComponentAt(tp.getSelectedIndex());
+		
+		//JPanel tab = (JPanel) hostContext.guiContext.get("open-tab-panel");
+		//if( tab == null ) return;
+		
+		//tab.revalidate();
+		//tab.repaint();
 	}
 }

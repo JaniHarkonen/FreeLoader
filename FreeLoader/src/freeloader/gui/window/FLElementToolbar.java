@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 
 import freeloader.FLAppContext;
 import freeloader.FLGuiContext;
+import freeloader.gui.settings.FLNewSettings;
+import freeloader.robot.actions.FLRobotAction;
+import freeloader.robot.actions.mouse.FLActionMouseRelease;
 
 public class FLElementToolbar extends FLElement {
 	
@@ -48,7 +51,9 @@ public class FLElementToolbar extends FLElement {
 	
 		// OPTION: Add action
 	private void OPTIONaddAction() {
-		
+		FLRobotAction newact = new FLActionMouseRelease();
+		hostContext.guiContext.put("action-new", newact);
+		hostContext.setSelectedActionSettings(new FLNewSettings(hostContext, newact));
 	}
 	
 		// OPTION: Remove action
@@ -70,8 +75,6 @@ public class FLElementToolbar extends FLElement {
 		// OPTION: Add robot
 	private void OPTIONaddRobot() {
 		System.out.println("add robot");
-		
-		
 	}
 	
 		// OPTION: Delete robot

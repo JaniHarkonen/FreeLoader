@@ -2,7 +2,10 @@ package freeloader.gui.window;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
@@ -32,8 +35,17 @@ public class FLElementTab extends FLElement {
 		
 		JSplitPane sp = new JSplitPane(SwingConstants.VERTICAL);
 		FLElementActionList al = new FLElementActionList(hostContext, ownerRobot);
+		
 		JPanel jp_sets = new JPanel();
 		jp_sets.setLayout(new BorderLayout());
+		JButton btn_save = new JButton("Save");
+		btn_save.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				saveSettings();
+			}
+		});
+		
 		hostContext.guiContext.put("open-settings-panel__" + ownerRobot.getName(), jp_sets);
 		
 		sp.add(al.getElement(), JSplitPane.LEFT);
@@ -44,5 +56,10 @@ public class FLElementTab extends FLElement {
 		wrapper.add(sp);
 		hostContext.guiContext.put("open-tab-panel", sp);
 		return wrapper;
+	}
+	
+		// Upon clicking "Save" in the settings panel
+	private void saveSettings() {
+		
 	}
 }

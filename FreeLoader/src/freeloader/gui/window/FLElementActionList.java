@@ -35,9 +35,6 @@ public class FLElementActionList extends FLElement {
 	public Component getElement() {
 		JPanel wrapper = createWrapper();
 		
-			// Get action descriptions for the currently open robot
-		//ArrayList<FLRobotAction> acts = hostContext.getSelectedRobot().getRobotContext().actions;
-		//System.out.println(hostContext.getSelectedRobot().getName());
 		ArrayList<FLRobotAction> acts = ownerRobot.getRobotContext().actions;
 		int s = acts.size();
 		String[] dscrs = new String[s];
@@ -71,6 +68,5 @@ public class FLElementActionList extends FLElement {
 		
 		hostContext.setSelectedActionSettings(sets);
 		hostContext.guiContext.put("selected-action-index", index);
-		//hostContext.guiContext.putElement("open-settings", sets);
 	}
 }
