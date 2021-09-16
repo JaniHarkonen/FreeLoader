@@ -29,10 +29,6 @@ public class FLRobot {
 		name = "Robot";
 	}
 	
-	/*public FLRobot(FLRobotContext rc) {
-		context = rc;
-	}*/
-	
 	
 		// Runs the robot executing all actions
 	public void run() {
