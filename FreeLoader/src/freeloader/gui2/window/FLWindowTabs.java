@@ -35,14 +35,19 @@ public class FLWindowTabs extends FLGUIComponent {
 		int s = bots.size();
 		for( int i = 0; i < s; i++ )
 		{
+			FLRobot bot = bots.get(i);
 			JPanel tab;
 			
 				// Only render the current tab
 			if( i == selectedRobotIndex )
-			tab = new JPanel();
+			{
+				FLGUIContext ctxt_tab = new FLGUIContext();
+				ctxt_tab.put("selected-robot", bot);
+				tab = new FLWindowTab(ctxt_tab).render();
+			}
 			else tab = new JPanel();
 			
-			tp.add(bots.get(i).getName(), tab);
+			tp.add(bot.getName(), tab);
 		}
 		
 		tp.setSelectedIndex(selectedRobotIndex);
@@ -61,8 +66,24 @@ public class FLWindowTabs extends FLGUIComponent {
 	
 		// Upon changing tabs
 	private void changeTab(int ind) {
-		System.out.println("change to: " + ind);
 		selectedRobotIndex = ind;
+		render();
+	}
+	
+		// Adds a new robot
+	public void addRobot() {
+		ArrayList<FLRobot> bots = (ArrayList<FLRobot>) context.get("robots");
+		FLRobot bot = new FLRobot();
+		bot.setName("test name");
+		selectedRobotIndex = bots.size();
+		bots.add(bot);
+		render();
+	}
+	
+		// Deletes currently open robot
+	public void deleteRobot() {
+		((ArrayList<FLRobot>) context.get("robots")).remove(selectedRobotIndex);
+		selectedRobotIndex = Math.max(0, selectedRobotIndex - 1);
 		render();
 	}
 }

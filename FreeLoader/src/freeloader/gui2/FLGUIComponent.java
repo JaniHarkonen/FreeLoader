@@ -21,7 +21,7 @@ public abstract class FLGUIComponent {
 		context = c;
 		renderOnce = false;
 		hasRendered = false;
-		element = new JPanel();
+		element = FLGUIUtilities.createBorderedContainer();
 	}
 	
 	protected FLGUIComponent(FLGUIContext c, boolean re) {

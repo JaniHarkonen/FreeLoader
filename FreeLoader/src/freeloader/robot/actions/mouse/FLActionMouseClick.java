@@ -41,4 +41,15 @@ public class FLActionMouseClick extends FLMouseButton {
 			sleep(interval, rc);
 		}
 	}
+	
+	
+		// Sets the number of times a click should be repeated
+	public void setRepeat(int r) {
+		repeat.setValue(r);
+	}
+	
+		// Returns the number of times a click should be repeated
+	public int getRepeat() {
+		return repeat.getValueUnmodded();
+	}
 }

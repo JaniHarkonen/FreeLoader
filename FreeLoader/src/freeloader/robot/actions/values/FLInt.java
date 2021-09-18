@@ -55,6 +55,11 @@ public class FLInt extends FLValue<Integer> {
 		else return v;
 	}
 	
+		// Sets the value
+	public void setValue(int v) {
+		value = v;
+	}
+	
 		// Sets whether the value should be randomized
 	public void setRandomized(boolean is) {
 		isRandomized = is;

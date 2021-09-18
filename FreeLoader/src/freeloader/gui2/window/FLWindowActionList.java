@@ -1,6 +1,5 @@
-package freeloader.gui.window;
+package freeloader.gui2.window;
 
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -9,34 +8,23 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import freeloader.FLAppContext;
-import freeloader.gui.settings.FLSettings;
+import freeloader.gui2.FLGUIComponent;
+import freeloader.gui2.FLGUIContext;
 import freeloader.gui2.FLGUIUtilities;
-import freeloader.robot.FLRobot;
-import freeloader.robot.FLRobotContext;
 import freeloader.robot.actions.FLRobotAction;
 
-public class FLElementActionList extends FLElement {
+public class FLWindowActionList extends FLGUIComponent {
 	
-		// Robot who's actions are listed here
-	private FLRobot ownerRobot;
-	
-
-	private FLElementActionList(FLAppContext host) {
-		super(host);
-	}
-	
-	public FLElementActionList(FLAppContext host, FLRobot owner) {
-		super(host);
-		ownerRobot = owner;
+	public FLWindowActionList(FLGUIContext c) {
+		super(c, false);
 	}
 	
 	
 	@Override
-	public Component getElement() {
-		JPanel wrapper = FLGUIUtilities.createBorderedContainer();
+	public JPanel draw() {
+		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
+		JPanel container = FLGUIUtilities.createBorderedContainer();
 		
-		ArrayList<FLRobotAction> acts = ownerRobot.getRobotContext().actions;
 		int s = acts.size();
 		String[] dscrs = new String[s];
 		for( int i = 0; i < s; i++ )
@@ -55,19 +43,22 @@ public class FLElementActionList extends FLElement {
 		JScrollPane sp = new JScrollPane();
 		sp.setViewportView(list);
 		
-		wrapper.add(sp);
+		container.add(sp);
 		
-		hostContext.guiContext.put("action-list-panel", wrapper);
-		hostContext.guiContext.put("action-list", this);
-		return wrapper;
+		//hostContext.guiContext.put("action-list-panel", wrapper);
+		//hostContext.guiContext.put("action-list", this);
+		return container;
 	}
 	
 		// Performed upon clicking a list element
 	private void onListElementClick(int index) {
-		FLRobotContext bot = hostContext.getSelectedRobot().getRobotContext();
+		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
+		FLWindowSettingsWrapper sets = (FLWindowSettingsWrapper) context.get("settings-panel");
+		sets.openAction(acts.get(index));
+		/*FLRobotContext bot = hostContext.getSelectedRobot().getRobotContext();
 		FLSettings sets = FLSettings.buildSettings(bot.actions.get(index), hostContext);
 		
 		hostContext.setSelectedActionSettings(sets);
-		hostContext.guiContext.put("selected-action-index", index);
+		hostContext.guiContext.put("selected-action-index", index);*/
 	}
 }

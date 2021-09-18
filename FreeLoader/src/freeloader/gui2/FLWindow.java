@@ -53,17 +53,23 @@ public class FLWindow extends FLGUIComponent {
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout());
 		
-			// Toolbar
-		FLWindowToolbar tbar = new FLWindowToolbar(null);
-		container.add(tbar.render(), BorderLayout.PAGE_START);
-		
 			// Tabs
 		ArrayList<FLRobot> robots = new ArrayList<FLRobot>();
 		int n_bots = (int) (Math.random() * 4.9999) + 1;
 		for( int i = 0; i < n_bots; i++ ) robots.add(DEBUGgenerateRandomRobot());
-		FLGUIContext ctxt = new FLGUIContext();
-		ctxt.put("robots", robots);
-		FLWindowTabs tabs = new FLWindowTabs(ctxt);
+		
+		FLGUIContext ctxt_tabs = new FLGUIContext();
+		ctxt_tabs.put("robots", robots);
+		
+		FLWindowTabs tabs = new FLWindowTabs(ctxt_tabs);
+		
+			// Toolbar
+		FLGUIContext ctxt_tbar = new FLGUIContext();
+		ctxt_tbar.put("tabs-container", tabs);
+		
+		FLWindowToolbar tbar = new FLWindowToolbar(ctxt_tbar);
+		container.add(tbar.render(), BorderLayout.PAGE_START);
+		
 		container.add(tabs.render());
 		
 		MAIN_WINDOW.add(container);
@@ -77,7 +83,7 @@ public class FLWindow extends FLGUIComponent {
 		bot.setName("" + Math.random());
 		int n_acts = (int) (Math.random() * 10.9999);
 		
-		for( int i = 0; i < n_acts; i++ )
+		/*for( int i = 0; i < n_acts; i++ )
 		{
 			FLRobotAction act;
 			int act_ind = (int) (Math.random() * 9.99);
@@ -99,7 +105,9 @@ public class FLWindow extends FLGUIComponent {
 			}
 			
 			bot.getRobotContext().actions.add(act);
-		}
+		}*/
+		
+		bot.getRobotContext().actions.add(new FLActionMouseClick());
 		return bot;
 	}
 }
