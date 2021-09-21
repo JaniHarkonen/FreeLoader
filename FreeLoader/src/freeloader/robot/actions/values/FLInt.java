@@ -89,4 +89,11 @@ public class FLInt extends FLValue<Integer> {
 	public int getErrorMargin() {
 		return errorMargin;
 	}
+	
+		// Returns the unmodified value, or 0 if randomized
+	public int getUnmoddedValueOrDefault() {
+		if( isRandomized == true ) return 0;
+		
+		return getUnmoddedValue();
+	}
 }

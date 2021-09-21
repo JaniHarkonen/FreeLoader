@@ -43,4 +43,30 @@ public class FLActionMouseScroll extends FLMouseButton {
 			sleep(interval, rc);
 		}
 	}
+	
+	
+		// Sets the scroll direction
+	public void setDirection(int dir) {
+		direction = dir;
+	}
+	
+		// Returns the scroll direction
+	public int getDirection() {
+		return direction;
+	}
+	
+		// Returns a reference to the notches FLInt
+	public FLInt getNotches() {
+		return notches;
+	}
+	
+		// Returns a reference to the repeat FLInt
+	public FLInt getRepeat() {
+		return repeat;
+	}
+	
+		// Returns a reference to the interval FLInt
+	public FLInt getInterval() {
+		return interval;
+	}
 }

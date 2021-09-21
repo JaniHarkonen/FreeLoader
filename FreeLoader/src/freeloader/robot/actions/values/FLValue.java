@@ -25,7 +25,7 @@ public abstract class FLValue<T> {
 	}
 	
 		// Returns the contained value without modifications
-	public T getValueUnmodded() {
+	public T getUnmoddedValue() {
 		return value;
 	}
 }

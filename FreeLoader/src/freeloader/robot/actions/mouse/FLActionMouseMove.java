@@ -43,4 +43,15 @@ public class FLActionMouseMove extends FLRobotAction {
 		rc.getRobot().mouseMove(lx, ly);
 		rc.memoryDelete("temp");
 	}
+	
+	
+		// Returns a reference to the location X FLInt
+	public FLInt getLocationX() {
+		return locationX;
+	}
+	
+		// Returns a refernce to the location Y FLInt
+	public FLInt getLocationY() {
+		return locationY;
+	}
 }

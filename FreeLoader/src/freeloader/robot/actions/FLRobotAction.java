@@ -1,6 +1,5 @@
 package freeloader.robot.actions;
 
-import freeloader.gui.settings.FLSettings;
 import freeloader.robot.FLRobotContext;
 import freeloader.robot.actions.values.FLInt;
 

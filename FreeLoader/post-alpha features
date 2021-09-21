@@ -1,0 +1,5 @@
+*** FreeLoader features for post-alpha versions ***
+
+- one-by-one typing
+- pathing in mouse move
+- descriptions removed from RobotActions and moved over to GUI

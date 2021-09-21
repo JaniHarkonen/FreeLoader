@@ -32,4 +32,10 @@ public class FLActionMouseHold extends FLMouseButton {
 			
 		} catch (InterruptedException e) { e.printStackTrace(); }
 	}
+	
+
+		// Returns a reference to the hold length FLInt
+	public FLInt getHoldLength() {
+		return length;
+	}
 }

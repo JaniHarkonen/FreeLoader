@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import freeloader.gui2.FLGUIComponent;
 import freeloader.gui2.FLGUIContext;
 import freeloader.gui2.FLGUIUtilities;
-import freeloader.robot.actions.FLRobotAction;
 
 public abstract class FLSettings extends FLGUIComponent {
 

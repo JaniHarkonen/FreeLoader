@@ -21,4 +21,10 @@ public class FLActionJump extends FLRobotAction {
 	public void perform(FLRobotContext rc) {
 		rc.getOwner().gotoLine(line.getValue(rc));
 	}
+	
+	
+		// Returns a reference to the line FLInt
+	public FLInt getLine() {
+		return line;
+	}
 }

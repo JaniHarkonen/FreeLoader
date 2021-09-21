@@ -22,4 +22,10 @@ public class FLActionKeyHold extends FLKeyboardKey {
 		rc.getRobot().keyPress(keyboardKey);
 		sleep(length, rc);
 	}
+	
+	
+		// Returns a reference to the length FLInt
+	public FLInt getHoldLength() {
+		return length;
+	}
 }

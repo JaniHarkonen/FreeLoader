@@ -40,4 +40,20 @@ public class FLActionKeyPress extends FLKeyboardKey {
 			sleep(interval, rc);
 		}
 	}
+	
+	
+		// Returns a reference to the repeat FLInt
+	public FLInt getRepeat() {
+		return repeat;
+	}
+	
+		// Returns a reference to the interval FLInt
+	public FLInt getInterval() {
+		return repeat;
+	}
+	
+		// Returns a reference to the press length FLInt
+	public FLInt getPressLength() {
+		return length;
+	}
 }

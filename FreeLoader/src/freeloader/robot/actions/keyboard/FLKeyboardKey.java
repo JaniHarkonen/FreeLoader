@@ -24,7 +24,6 @@ public abstract class FLKeyboardKey extends FLRobotAction {
 	
 	@Override
 	public void perform(FLRobotContext rc) {
-		
 	}
 	
 		// Sets the key to listen to (from KeyEvent)

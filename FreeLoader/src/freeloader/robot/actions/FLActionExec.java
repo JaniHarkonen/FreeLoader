@@ -28,4 +28,15 @@ public class FLActionExec extends FLRobotAction {
 		}
 		catch (IOException e) { e.printStackTrace(); }
 	}
+	
+	
+		// Sets the path of the program to be run
+	public void setPath(String p) {
+		path = p;
+	}
+	
+		// Returns the path of the program to be run
+	public String getPath() {
+		return path;
+	}
 }
