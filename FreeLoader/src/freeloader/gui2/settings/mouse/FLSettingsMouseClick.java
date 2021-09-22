@@ -13,6 +13,7 @@ import javax.swing.SpinnerNumberModel;
 import freeloader.gui2.FLGUIContext;
 import freeloader.gui2.FLGUIUtilities;
 import freeloader.gui2.sub.FLSubInputField;
+import freeloader.gui2.sub.FLSubTogglerCheckBox;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.values.FLInt;
 
@@ -28,17 +29,14 @@ public class FLSettingsMouseClick extends FLSettingsMouse {
 	public static final int DEFAULT_CLICK_LENGTH_VARIANCE = 90;
 	
 	
-		// DROP-DOWN MENU - Mouse button
-	//private FLSubDropDownMenu ddMouseButton;
-	
 		// (swing) SPINNER - Number of clicks
 	private JSpinner sNumberOfClicks;
 	
 		// INPUT FIELD - Click interval
 	private FLSubInputField ifClickInterval;
 	
-		// (swing) CHECK BOX - Randomize clicks
-	private JCheckBox cbRandomizeClicks;
+		// TOGGLER CHECK BOX - Randomize clicks
+	private FLSubTogglerCheckBox tglRandomizeClicks;
 	
 		// INPUT FIELD - Click variance
 	private FLSubInputField ifClickVariance;
@@ -96,17 +94,9 @@ public class FLSettingsMouseClick extends FLSettingsMouse {
 		ifClickVariance.textField.setText(Integer.toString(v_intr_var));
 		
 			// Randomize click interval
-		cbRandomizeClicks = new JCheckBox("Randomize");
-		cbRandomizeClicks.setSelected(v_intr_isrnd);
-		cbRandomizeClicks.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				ifClickVariance.textField.setEnabled(!ifClickVariance.textField.isEnabled());
-			}
-		});
+		tglRandomizeClicks = new FLSubTogglerCheckBox(this, "Randomize", ifClickVariance.textField, false);
 		line_intr_click.add(ifClickVariance.render());
-		line_intr_click.add(cbRandomizeClicks);
+		line_intr_click.add(tglRandomizeClicks.render());
 		
 			// Randomize click length
 		JPanel line_randlen = FLGUIUtilities.createLineContainer();
@@ -123,6 +113,7 @@ public class FLSettingsMouseClick extends FLSettingsMouse {
 		container.add(ddMouseButton.render());
 		FLGUIUtilities.addEmptySpace(container);
 		container.add(pane_bhv);
+		
 		return container;
 	}
 	
@@ -135,7 +126,7 @@ public class FLSettingsMouseClick extends FLSettingsMouse {
 		int intr = Integer.parseInt(ifClickInterval.textField.getText());
 		int var  = Integer.parseInt(ifClickVariance.textField.getText());
 		
-		boolean is_rnd_intr = cbRandomizeClicks.isSelected();
+		boolean is_rnd_intr = tglRandomizeClicks.toggler.isSelected();
 		boolean is_rnd_len = cbRandomizeClickLength.isSelected();
 		
 			// Set mouse button

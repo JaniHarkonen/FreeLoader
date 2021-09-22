@@ -10,6 +10,8 @@ import freeloader.gui2.window.FLWindowTabs;
 import freeloader.gui2.window.FLWindowToolbar;
 import freeloader.robot.FLRobot;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
+import freeloader.robot.actions.mouse.FLActionMouseHold;
+import freeloader.robot.actions.mouse.FLActionMouseMove;
 
 public class FLWindow extends FLGUIComponent {
 
@@ -98,6 +100,8 @@ public class FLWindow extends FLGUIComponent {
 		}*/
 		
 		bot.getRobotContext().actions.add(new FLActionMouseClick());
+		bot.getRobotContext().actions.add(new FLActionMouseHold());
+		bot.getRobotContext().actions.add(new FLActionMouseMove());
 		return bot;
 	}
 }

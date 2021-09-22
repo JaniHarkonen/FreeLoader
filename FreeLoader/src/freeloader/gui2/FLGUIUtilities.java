@@ -9,8 +9,19 @@ import javax.swing.JPanel;
 
 import freeloader.gui2.settings.FLSettings;
 import freeloader.gui2.settings.mouse.FLSettingsMouseClick;
+import freeloader.gui2.settings.mouse.FLSettingsMouseHold;
+import freeloader.gui2.settings.mouse.FLSettingsMouseMove;
+import freeloader.robot.actions.FLActionExec;
+import freeloader.robot.actions.FLActionWait;
 import freeloader.robot.actions.FLRobotAction;
+import freeloader.robot.actions.keyboard.FLActionKeyHold;
+import freeloader.robot.actions.keyboard.FLActionKeyPress;
+import freeloader.robot.actions.keyboard.FLActionKeyRelease;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
+import freeloader.robot.actions.mouse.FLActionMouseHold;
+import freeloader.robot.actions.mouse.FLActionMouseMove;
+import freeloader.robot.actions.mouse.FLActionMouseRelease;
+import freeloader.robot.actions.mouse.FLActionMouseScroll;
 
 /**
  * This class contains utility methods for the GUI-components of FreeLoader
@@ -28,27 +39,27 @@ public class FLGUIUtilities {
 
 	
 	/**
-	 * Builds a settings panel for a given robot action.
-	 * @param act Action the panel is derived from.
+	 * Builds a settings panel for a given robot action. Each FLRobotAction whose
+	 * settings are to be rendered should be included in this method.
+	 * @param src Action the panel is derived from (the source).
 	 * @return Settings panel based on the action.
 	 */
 	public static FLSettings buildSettings(FLRobotAction src) {
 		if( src == null ) return null;
+		
 		FLGUIContext ctxt = new FLGUIContext();
 		ctxt.put("action", src);
 		
-		if( src instanceof FLActionMouseClick ) return new FLSettingsMouseClick(ctxt);
-		
-		/*if( src instanceof FLActionMouseMove ) return new FLSettingsMouseMove(host, src);
-		if( src instanceof FLActionMouseClick ) return new FLSettingsMouseClick(host, src);
-		if( src instanceof FLActionMouseHold ) return new FLSettingsMouseHold(host, src);
-		if( src instanceof FLActionMouseRelease ) return new FLSettingsMouseRelease(host, src);
-		if( src instanceof FLActionMouseScroll ) return new FLSettingsMouseScroll(host, src);
-		if( src instanceof FLActionKeyPress ) return new FLSettingsKeyPress(host, src);
-		if( src instanceof FLActionKeyHold ) return new FLSettingsKeyHold(host, src);
-		if( src instanceof FLActionKeyRelease ) return new FLSettingsKeyRelease(host, src);
-		if( src instanceof FLActionWait ) return new FLSettingsWait(host, src);
-		if( src instanceof FLActionExec ) return new FLSettingsExec(host, src);*/
+		if( src instanceof FLActionMouseClick 	) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionMouseHold 	)  	return new FLSettingsMouseHold 		(ctxt);
+		if( src instanceof FLActionMouseMove 	) 	return new FLSettingsMouseMove		(ctxt);
+		if( src instanceof FLActionMouseRelease ) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionMouseScroll 	) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionKeyPress 	) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionKeyHold 		) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionKeyRelease 	) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionWait 		) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionExec 		) 	return new FLSettingsMouseClick		(ctxt);
 		
 		return null;
 	}
