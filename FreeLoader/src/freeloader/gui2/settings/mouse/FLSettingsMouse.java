@@ -4,6 +4,7 @@ import freeloader.gui2.FLGUIComponent;
 import freeloader.gui2.FLGUIContext;
 import freeloader.gui2.settings.FLSettings;
 import freeloader.gui2.sub.FLSubDropDownMenu;
+import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.mouse.FLMouseButton;
 
 public abstract class FLSettingsMouse extends FLSettings {
@@ -30,5 +31,12 @@ public abstract class FLSettingsMouse extends FLSettings {
 		// to a given owner
 	public static FLSubDropDownMenu buildMouseButtonMenu(FLGUIComponent o) {
 		return new FLSubDropDownMenu(o, "Mouse button:  ", FLMouseButton.BUTTON_CAPTIONS);
+	}
+	
+	
+	@Override
+	public void updateAction() {
+		FLMouseButton act = (FLMouseButton) context.get("action");
+		act.setMouseButton(ddMouseButton.dropDownMenu.getSelectedIndex());
 	}
 }

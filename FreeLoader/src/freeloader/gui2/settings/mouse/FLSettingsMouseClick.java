@@ -119,18 +119,16 @@ public class FLSettingsMouseClick extends FLSettingsMouse {
 	
 	@Override
 	public void updateAction() {
+		super.updateAction();
+		
 		FLActionMouseClick act = (FLActionMouseClick) context.get("action");
 		
-		int mb = ddMouseButton.dropDownMenu.getSelectedIndex();
 		int rep  = (int) sNumberOfClicks.getValue();
 		int intr = Integer.parseInt(ifClickInterval.textField.getText());
 		int var  = Integer.parseInt(ifClickVariance.textField.getText());
 		
 		boolean is_rnd_intr = tglRandomizeClicks.toggler.isSelected();
 		boolean is_rnd_len = cbRandomizeClickLength.isSelected();
-		
-			// Set mouse button
-		act.setMouseButton(mb);
 		
 			// Set repeat
 		act.getRepeat().setValue(rep);

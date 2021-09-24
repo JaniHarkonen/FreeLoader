@@ -69,19 +69,19 @@ public class FLSettingsMouseHold extends FLSettingsMouse {
 	
 	@Override
 	public void updateAction() {
+		super.updateAction();
+		
 		FLActionMouseHold act = (FLActionMouseHold) context.get("action");
 		
 			// References
 		FLInt f_hdur = act.getHoldLength();
 		
 			// Variables to be saved
-		int v_mb = ddMouseButton.dropDownMenu.getSelectedIndex();
 		int v_hdur = Integer.parseInt(ifHoldDuration.textField.getText());
 		int v_hudr_var = Integer.parseInt(ifHoldDurationVariance.textField.getText());
 		boolean v_hdur_isrnd = tglRandomizeHoldDuration.toggler.isSelected();
 		
 			// Save changes
-		act.setMouseButton(v_mb);
 		f_hdur.setValue(v_hdur);
 		f_hdur.setErrorMargin(v_hudr_var);
 		f_hdur.setRandomized(v_hdur_isrnd);

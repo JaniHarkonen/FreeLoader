@@ -68,10 +68,13 @@ public class FLSettingsMouseMove extends FLSettingsMouse {
 		JPanel line_loc_x = FLGUIUtilities.createLineContainer();
 		ifLocationX = new FLSubInputField(this, "X:  ");
 		ifLocationX.textField.setText(Integer.toString(v_loc_x));
+		
 		ifLocationXError = new FLSubInputField(this, "  ERROR:  ");
 		ifLocationXError.textField.setText(Integer.toString(v_loc_x_err));
+		
 		tglRandomizeLocationX = new FLSubTogglerCheckBox(this, "Randomize", ifLocationXError.textField, false);
 		tglRandomizeLocationX.toggler.setSelected(v_loc_x_isrnd);
+		
 		tglRelativeLocationX = new FLSubTogglerCheckBox(this, "Relative?", v_loc_x_isrel);
 		
 		line_loc_x.add(ifLocationX.render());
@@ -79,14 +82,17 @@ public class FLSettingsMouseMove extends FLSettingsMouse {
 		line_loc_x.add(tglRandomizeLocationX.render());
 		line_loc_x.add(tglRelativeLocationX.render());
 		
-		// Location X
+			// Location X
 		JPanel line_loc_y = FLGUIUtilities.createLineContainer();
 		ifLocationY = new FLSubInputField(this, "Y:  ");
 		ifLocationY.textField.setText(Integer.toString(v_loc_y));
+		
 		ifLocationYError = new FLSubInputField(this, "  ERROR:  ");
 		ifLocationYError.textField.setText(Integer.toString(v_loc_y_err));
+		
 		tglRandomizeLocationY = new FLSubTogglerCheckBox(this, "Randomize", ifLocationYError.textField, false);
 		tglRandomizeLocationY.toggler.setSelected(v_loc_y_isrnd);
+		
 		tglRelativeLocationY = new FLSubTogglerCheckBox(this, "Relative?", v_loc_y_isrel);
 		
 		line_loc_y.add(ifLocationY.render());

@@ -12,6 +12,8 @@ import freeloader.robot.FLRobot;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.mouse.FLActionMouseHold;
 import freeloader.robot.actions.mouse.FLActionMouseMove;
+import freeloader.robot.actions.mouse.FLActionMouseRelease;
+import freeloader.robot.actions.mouse.FLActionMouseScroll;
 
 public class FLWindow extends FLGUIComponent {
 
@@ -101,6 +103,15 @@ public class FLWindow extends FLGUIComponent {
 		
 		bot.getRobotContext().actions.add(new FLActionMouseClick());
 		bot.getRobotContext().actions.add(new FLActionMouseHold());
+		bot.getRobotContext().actions.add(new FLActionMouseMove());
+		bot.getRobotContext().actions.add(new FLActionMouseRelease());
+		bot.getRobotContext().actions.add(new FLActionMouseScroll());
+		
+		bot.getRobotContext().actions.add(new FLActionMouseMove());
+		bot.getRobotContext().actions.add(new FLActionMouseMove());
+		bot.getRobotContext().actions.add(new FLActionMouseMove());
+		
+		bot.getRobotContext().actions.add(new FLActionMouseMove());
 		bot.getRobotContext().actions.add(new FLActionMouseMove());
 		return bot;
 	}
