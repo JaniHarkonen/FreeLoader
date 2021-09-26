@@ -33,6 +33,11 @@ public abstract class FLKeyboardKey extends FLRobotAction {
 		updateDescription();
 	}
 	
+		// Returns the keyboard key to listen to (from KeyEvent)
+	public int getKeyboardKey() {
+		return keyboardKey;
+	}
+	
 		// Sets the description of the action by mouse button
 	public void updateDescription() {
 		setDescription(KeyEvent.getKeyText(keyboardKey) + " " + descriptionSuffix);
