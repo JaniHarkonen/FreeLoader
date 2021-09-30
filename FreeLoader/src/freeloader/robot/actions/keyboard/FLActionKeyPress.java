@@ -49,7 +49,7 @@ public class FLActionKeyPress extends FLKeyboardKey {
 	
 		// Returns a reference to the interval FLInt
 	public FLInt getInterval() {
-		return repeat;
+		return interval;
 	}
 	
 		// Returns a reference to the press length FLInt

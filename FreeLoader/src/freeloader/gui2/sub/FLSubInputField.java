@@ -11,6 +11,10 @@ import freeloader.gui2.FLGUIUtilities;
 
 public class FLSubInputField extends FLSubcomponent {
 	
+		// Default input field width
+	public static final int DEFAULT_WIDTH = 96;
+	
+	
 		// Container JPanel
 	public JPanel container;
 	
@@ -26,7 +30,7 @@ public class FLSubInputField extends FLSubcomponent {
 		container = FLGUIUtilities.createLineContainer();
 		title = new JLabel(t);
 		textField = new JTextField(10);
-		textField.setMaximumSize(new Dimension(Integer.MAX_VALUE, textField.getPreferredSize().height));
+		textField.setMaximumSize(new Dimension(DEFAULT_WIDTH, textField.getPreferredSize().height));
 	}
 	
 	

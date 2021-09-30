@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import freeloader.gui2.settings.FLSettings;
+import freeloader.gui2.settings.FLSettingsExec;
+import freeloader.gui2.settings.FLSettingsWait;
+import freeloader.gui2.settings.keyboard.FLSettingsKeyHold;
+import freeloader.gui2.settings.keyboard.FLSettingsKeyPress;
+import freeloader.gui2.settings.keyboard.FLSettingsKeyRelease;
 import freeloader.gui2.settings.mouse.FLSettingsMouseClick;
 import freeloader.gui2.settings.mouse.FLSettingsMouseHold;
 import freeloader.gui2.settings.mouse.FLSettingsMouseMove;
@@ -57,11 +62,11 @@ public class FLGUIUtilities {
 		if( src instanceof FLActionMouseMove 	) 	return new FLSettingsMouseMove		(ctxt);
 		if( src instanceof FLActionMouseRelease ) 	return new FLSettingsMouseRelease	(ctxt);
 		if( src instanceof FLActionMouseScroll 	) 	return new FLSettingsMouseScroll	(ctxt);
-		if( src instanceof FLActionKeyPress 	) 	return new FLSettingsMouseClick		(ctxt);
-		if( src instanceof FLActionKeyHold 		) 	return new FLSettingsMouseClick		(ctxt);
-		if( src instanceof FLActionKeyRelease 	) 	return new FLSettingsMouseClick		(ctxt);
-		if( src instanceof FLActionWait 		) 	return new FLSettingsMouseClick		(ctxt);
-		if( src instanceof FLActionExec 		) 	return new FLSettingsMouseClick		(ctxt);
+		if( src instanceof FLActionKeyPress 	) 	return new FLSettingsKeyPress		(ctxt);
+		if( src instanceof FLActionKeyHold 		) 	return new FLSettingsKeyHold		(ctxt);
+		if( src instanceof FLActionKeyRelease 	) 	return new FLSettingsKeyRelease		(ctxt);
+		if( src instanceof FLActionWait 		) 	return new FLSettingsWait			(ctxt);
+		if( src instanceof FLActionExec 		) 	return new FLSettingsExec			(ctxt);
 		
 		return null;
 	}

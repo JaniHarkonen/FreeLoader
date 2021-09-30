@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 import freeloader.gui2.window.FLWindowTabs;
 import freeloader.gui2.window.FLWindowToolbar;
 import freeloader.robot.FLRobot;
+import freeloader.robot.actions.FLActionExec;
+import freeloader.robot.actions.FLActionWait;
+import freeloader.robot.actions.keyboard.FLActionKeyHold;
+import freeloader.robot.actions.keyboard.FLActionKeyPress;
+import freeloader.robot.actions.keyboard.FLActionKeyRelease;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.mouse.FLActionMouseHold;
 import freeloader.robot.actions.mouse.FLActionMouseMove;
@@ -107,12 +112,12 @@ public class FLWindow extends FLGUIComponent {
 		bot.getRobotContext().actions.add(new FLActionMouseRelease());
 		bot.getRobotContext().actions.add(new FLActionMouseScroll());
 		
-		bot.getRobotContext().actions.add(new FLActionMouseMove());
-		bot.getRobotContext().actions.add(new FLActionMouseMove());
-		bot.getRobotContext().actions.add(new FLActionMouseMove());
+		bot.getRobotContext().actions.add(new FLActionKeyRelease());
+		bot.getRobotContext().actions.add(new FLActionKeyHold());
+		bot.getRobotContext().actions.add(new FLActionKeyPress());
 		
-		bot.getRobotContext().actions.add(new FLActionMouseMove());
-		bot.getRobotContext().actions.add(new FLActionMouseMove());
+		bot.getRobotContext().actions.add(new FLActionExec());
+		bot.getRobotContext().actions.add(new FLActionWait());
 		return bot;
 	}
 }
