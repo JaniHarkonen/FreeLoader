@@ -17,6 +17,9 @@ public class FLWindowTabs extends FLGUIComponent {
 		// The position of the robot in the robot list (also the tab index)
 	private int selectedRobotIndex;
 	
+		// Reference to the currently open tab
+	private FLWindowTab selectedRobotTab;
+	
 
 	public FLWindowTabs(FLGUIContext c) {
 		super(c);
@@ -24,6 +27,7 @@ public class FLWindowTabs extends FLGUIComponent {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public JPanel draw() {
 		ArrayList<FLRobot> bots = (ArrayList<FLRobot>) context.get("robots");
@@ -43,7 +47,8 @@ public class FLWindowTabs extends FLGUIComponent {
 			{
 				FLGUIContext ctxt_tab = new FLGUIContext();
 				ctxt_tab.put("selected-robot", bot);
-				tab = new FLWindowTab(ctxt_tab).render();
+				selectedRobotTab = new FLWindowTab(ctxt_tab);
+				tab = selectedRobotTab.render();
 			}
 			else tab = new JPanel();
 			
@@ -71,6 +76,7 @@ public class FLWindowTabs extends FLGUIComponent {
 	}
 	
 		// Adds a new robot
+	@SuppressWarnings("unchecked")
 	public void addRobot() {
 		ArrayList<FLRobot> bots = (ArrayList<FLRobot>) context.get("robots");
 		FLRobot bot = new FLRobot();
@@ -81,9 +87,15 @@ public class FLWindowTabs extends FLGUIComponent {
 	}
 	
 		// Deletes currently open robot
+	@SuppressWarnings("unchecked")
 	public void deleteRobot() {
 		((ArrayList<FLRobot>) context.get("robots")).remove(selectedRobotIndex);
 		selectedRobotIndex = Math.max(0, selectedRobotIndex - 1);
 		render();
+	}
+	
+		// Removes selected robot action from the currently open robot
+	public void removeAction() {
+		selectedRobotTab.removeAction();
 	}
 }

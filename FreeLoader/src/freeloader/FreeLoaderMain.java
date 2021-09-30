@@ -10,6 +10,6 @@ import freeloader.gui2.FLWindow;
 public class FreeLoaderMain {
 
 	public static void main(String[] args) {
-		FLWindow window = new FLWindow();
+		new FLWindow();
 	}
 }

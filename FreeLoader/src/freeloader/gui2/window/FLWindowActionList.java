@@ -15,13 +15,20 @@ import freeloader.robot.actions.FLRobotAction;
 
 public class FLWindowActionList extends FLGUIComponent {
 	
+		// Currently selected action index in the list
+	private int actionIndex;
+	
+	
 	public FLWindowActionList(FLGUIContext c) {
 		super(c, false);
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public JPanel draw() {
+		actionIndex = 0;
+		
 		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
 		JPanel container = FLGUIUtilities.createBorderedContainer();
 		
@@ -31,7 +38,7 @@ public class FLWindowActionList extends FLGUIComponent {
 		dscrs[i] = acts.get(i).getDescription();
 		
 			// Create a list and handle clicks
-		JList list = new JList(dscrs);
+		JList<String> list = new JList<String>(dscrs);
 		list.addMouseListener(new MouseAdapter() {
 			
 			public void mouseReleased(MouseEvent evt) {
@@ -44,21 +51,31 @@ public class FLWindowActionList extends FLGUIComponent {
 		sp.setViewportView(list);
 		
 		container.add(sp);
-		
-		//hostContext.guiContext.put("action-list-panel", wrapper);
-		//hostContext.guiContext.put("action-list", this);
 		return container;
 	}
 	
 		// Performed upon clicking a list element
+	@SuppressWarnings("unchecked")
 	private void onListElementClick(int index) {
 		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
+		
+		if( index < 0 || index >= acts.size() ) return;
+		
 		FLWindowSettingsWrapper sets = (FLWindowSettingsWrapper) context.get("settings-panel");
 		sets.openAction(acts.get(index));
-		/*FLRobotContext bot = hostContext.getSelectedRobot().getRobotContext();
-		FLSettings sets = FLSettings.buildSettings(bot.actions.get(index), hostContext);
 		
-		hostContext.setSelectedActionSettings(sets);
-		hostContext.guiContext.put("selected-action-index", index);*/
+		actionIndex = index;
+	}
+		
+		// Removes selected robot action from the currently open robot
+	@SuppressWarnings("unchecked")
+	public void removeAction() {
+		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
+		
+		if( acts.size() <= 0 ) return;
+		
+		acts.remove(actionIndex);
+		
+		((FLWindowTab) context.get("host")).render();
 	}
 }

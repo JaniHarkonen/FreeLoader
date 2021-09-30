@@ -4,7 +4,6 @@ import freeloader.gui2.FLGUIComponent;
 import freeloader.gui2.FLGUIContext;
 import freeloader.gui2.settings.FLSettings;
 import freeloader.gui2.sub.FLSubDropDownMenu;
-import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.mouse.FLMouseButton;
 
 public abstract class FLSettingsMouse extends FLSettings {

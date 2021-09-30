@@ -53,17 +53,16 @@ public class FLWindowToolbar extends FLGUIComponent {
 		// OPTION: Remove action
 	private void OPTIONremoveAction() {
 		System.out.println("remove action");
+		((FLWindowTabs) context.get("tabs-container")).removeAction();
 	}
 	
 		// OPTION: Add robot
 	private void OPTIONaddRobot() {
-		System.out.println("add robot");
 		((FLWindowTabs) context.get("tabs-container")).addRobot();
 	}
 	
 		// OPTION: Delete robot
 	private void OPTIONdeleteRobot() {
-		System.out.println("delete robot");
 		((FLWindowTabs) context.get("tabs-container")).deleteRobot();
 	}
 }
