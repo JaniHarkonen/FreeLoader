@@ -7,8 +7,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import freeloader.gui2.settings.FLNullAction;
 import freeloader.gui2.settings.FLSettings;
 import freeloader.gui2.settings.FLSettingsExec;
+import freeloader.gui2.settings.FLSettingsNewAction;
 import freeloader.gui2.settings.FLSettingsWait;
 import freeloader.gui2.settings.keyboard.FLSettingsKeyHold;
 import freeloader.gui2.settings.keyboard.FLSettingsKeyPress;
@@ -67,6 +69,8 @@ public class FLGUIUtilities {
 		if( src instanceof FLActionKeyRelease 	) 	return new FLSettingsKeyRelease		(ctxt);
 		if( src instanceof FLActionWait 		) 	return new FLSettingsWait			(ctxt);
 		if( src instanceof FLActionExec 		) 	return new FLSettingsExec			(ctxt);
+		
+		if( src instanceof FLNullAction 		)	return new FLSettingsNewAction		(ctxt);
 		
 		return null;
 	}

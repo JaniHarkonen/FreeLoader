@@ -15,6 +15,7 @@ public class FLActionWait extends FLRobotAction {
 	public FLActionWait() {
 		super();
 		
+		title = "Wait";
 		time = new FLInt(0);
 		descriptionPrefix = "Wait ";
 	}

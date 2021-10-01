@@ -11,7 +11,8 @@ public class FLActionKeyHold extends FLKeyboardKey {
 
 	public FLActionKeyHold() {
 		super();
-		
+
+		title = "Hold key";
 		descriptionSuffix = " held";
 		length = new FLInt(0);
 	}

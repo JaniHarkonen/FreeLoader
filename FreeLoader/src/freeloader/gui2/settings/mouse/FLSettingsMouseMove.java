@@ -42,7 +42,7 @@ public class FLSettingsMouseMove extends FLSettingsMouse {
 	
 	
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 			// Get values
 		FLActionMouseMove act = (FLActionMouseMove) context.get("action");
 		

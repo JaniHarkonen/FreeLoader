@@ -13,6 +13,7 @@ public class FLActionExec extends FLRobotAction {
 	public FLActionExec() {
 		super();
 		
+		title = "Run program";
 		description = "Run program";
 		path = "";
 	}

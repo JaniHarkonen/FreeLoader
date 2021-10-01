@@ -20,7 +20,7 @@ public class FLSettingsWait extends FLSettings {
 	
 	
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 			// Get values
 		FLActionWait act = (FLActionWait) context.get("action");
 		int v_wait = act.getWaitTime().getUnmoddedValue();

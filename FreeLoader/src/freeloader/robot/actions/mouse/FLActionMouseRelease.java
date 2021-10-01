@@ -9,6 +9,7 @@ public class FLActionMouseRelease extends FLMouseButton {
 	public FLActionMouseRelease() {
 		super();
 		
+		title = "Release mouse";
 		descriptionSuffix = "mouse released";
 	}
 	

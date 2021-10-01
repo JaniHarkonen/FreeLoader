@@ -20,6 +20,7 @@ public class FLActionKeyPress extends FLKeyboardKey {
 	public FLActionKeyPress() {
 		super();
 		
+		title = "Press key";
 		descriptionSuffix = " pressed";
 		repeat = new FLInt(0);
 		interval = new FLInt(0);

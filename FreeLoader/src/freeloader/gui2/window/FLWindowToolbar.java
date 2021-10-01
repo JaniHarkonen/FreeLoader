@@ -48,6 +48,7 @@ public class FLWindowToolbar extends FLGUIComponent {
 		// OPTION: Add action
 	private void OPTIONaddAction() {
 		System.out.println("add action");
+		((FLWindowTabs) context.get("tabs-container")).addAction();
 	}
 	
 		// OPTION: Remove action

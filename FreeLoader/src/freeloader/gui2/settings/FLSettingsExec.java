@@ -21,7 +21,7 @@ public class FLSettingsExec extends FLSettings {
 	
 	
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 			// Get values
 		FLActionExec act = (FLActionExec) context.get("action");
 		String v_path = act.getPath();

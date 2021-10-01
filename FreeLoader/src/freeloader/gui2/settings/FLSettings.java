@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import freeloader.gui2.FLGUIComponent;
 import freeloader.gui2.FLGUIContext;
 import freeloader.gui2.FLGUIUtilities;
+import freeloader.robot.actions.FLRobotAction;
 
 public abstract class FLSettings extends FLGUIComponent {
 
@@ -17,6 +18,12 @@ public abstract class FLSettings extends FLGUIComponent {
 		// Updates the underlying action
 		// (TO BE OVERRIDDEN)
 	public void updateAction() {
+	}
+	
+	
+		// Returns the underlying action
+	public FLRobotAction getUnderlyingAction() {
+		return (FLRobotAction) context.get("action");
 	}
 	
 	

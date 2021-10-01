@@ -14,6 +14,7 @@ public class FLActionMouseHold extends FLMouseButton {
 	public FLActionMouseHold() {
 		super();
 		
+		title = "Hold mouse";
 		descriptionSuffix = "mouse held";
 		length = new FLInt(0);
 	}

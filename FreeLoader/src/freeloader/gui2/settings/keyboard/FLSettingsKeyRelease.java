@@ -12,7 +12,7 @@ public class FLSettingsKeyRelease extends FLSettingsKeyboard {
 	
 	
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 		JPanel container = createSettingsContainer();
 		
 		createKeyboardKeyMenu();

@@ -27,7 +27,7 @@ public class FLSettingsMouseHold extends FLSettingsMouse {
 	
 
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 			// Get values
 		FLActionMouseHold act = (FLActionMouseHold) context.get("action");
 		FLInt hdur_f = act.getHoldLength();

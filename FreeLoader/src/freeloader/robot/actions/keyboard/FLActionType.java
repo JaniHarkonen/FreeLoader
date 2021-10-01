@@ -28,6 +28,7 @@ public class FLActionType extends FLRobotAction {
 	public FLActionType() {
 		super();
 		
+		title = "Type text";
 		description = "Type text";
 		text = "";
 		enableOneByOne = false;

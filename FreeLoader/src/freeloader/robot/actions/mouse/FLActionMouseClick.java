@@ -20,6 +20,7 @@ public class FLActionMouseClick extends FLMouseButton {
 	public FLActionMouseClick() {
 		super();
 		
+		title = "Click";
 		descriptionSuffix = "mouse clicked";
 		repeat = new FLInt(0);
 		interval = new FLInt(0);

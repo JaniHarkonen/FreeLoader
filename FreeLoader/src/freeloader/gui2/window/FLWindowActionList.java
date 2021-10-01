@@ -61,7 +61,7 @@ public class FLWindowActionList extends FLGUIComponent {
 		
 		if( index < 0 || index >= acts.size() ) return;
 		
-		FLWindowSettingsWrapper sets = (FLWindowSettingsWrapper) context.get("settings-panel");
+		FLWindowSettingsWrapper sets = ((FLWindowTab) context.get("host")).getSettingsPanel();
 		sets.openAction(acts.get(index));
 		
 		actionIndex = index;
@@ -77,5 +77,10 @@ public class FLWindowActionList extends FLGUIComponent {
 		acts.remove(actionIndex);
 		
 		((FLWindowTab) context.get("host")).render();
+	}
+	
+		// Returns the index of currently selected action
+	public int getActionIndex() {
+		return actionIndex;
 	}
 }

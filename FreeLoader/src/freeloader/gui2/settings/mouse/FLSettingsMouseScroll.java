@@ -45,7 +45,7 @@ public class FLSettingsMouseScroll extends FLSettingsMouse {
 	
 	
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 			// Get values
 		FLActionMouseScroll act = (FLActionMouseScroll) context.get("action");
 		int v_sdir = act.getDirection();

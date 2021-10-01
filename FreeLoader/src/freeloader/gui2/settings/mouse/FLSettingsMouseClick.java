@@ -49,7 +49,7 @@ public class FLSettingsMouseClick extends FLSettingsMouse {
 	
 
 	@Override
-	public JPanel draw() {
+	protected JPanel draw() {
 		
 			// Get values
 		FLActionMouseClick act = (FLActionMouseClick) context.get("action");

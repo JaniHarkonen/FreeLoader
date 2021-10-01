@@ -7,6 +7,7 @@ public class FLActionKeyRelease extends FLKeyboardKey {
 	public FLActionKeyRelease() {
 		super();
 		
+		title = "Release key";
 		descriptionSuffix = " released";
 	}
 	

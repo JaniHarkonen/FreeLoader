@@ -27,7 +27,7 @@ public class FLSettingsKeyHold extends FLSettingsKeyboard {
 	
 
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 			// Get values
 		FLActionKeyHold act = (FLActionKeyHold) context.get("action");
 		FLInt hdur_f = act.getHoldLength();

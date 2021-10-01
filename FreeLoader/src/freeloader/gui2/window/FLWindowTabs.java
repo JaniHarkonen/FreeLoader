@@ -94,6 +94,11 @@ public class FLWindowTabs extends FLGUIComponent {
 		render();
 	}
 	
+		// Opens up an action addition panel
+	public void addAction() {
+		selectedRobotTab.addAction();
+	}
+	
 		// Removes selected robot action from the currently open robot
 	public void removeAction() {
 		selectedRobotTab.removeAction();

@@ -23,6 +23,7 @@ public class FLActionMouseScroll extends FLMouseButton {
 	public FLActionMouseScroll() {
 		super();
 		
+		title = "Scroll mouse";
 		descriptionSuffix = "mouse wheel";
 		direction = 0;
 		notches = new FLInt(0);

@@ -23,7 +23,7 @@ public class DummySettings extends FLSettings {
 	
 	
 	@Override
-	public JPanel render() {
+	public JPanel draw() {
 			// Get values
 		FLActionMouseHold act = (FLActionMouseHold) context.get("action");
 		

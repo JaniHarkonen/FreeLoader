@@ -12,7 +12,7 @@ public class FLSettingsMouseRelease extends FLSettingsMouse {
 	
 	
 	@Override
-	public JPanel render() {
+	protected JPanel draw() {
 		JPanel container = createSettingsContainer();
 		createMouseButtonMenu();
 		container.add(ddMouseButton.render());

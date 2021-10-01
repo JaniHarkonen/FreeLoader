@@ -12,6 +12,7 @@ public class FLActionJump extends FLRobotAction {
 	public FLActionJump() {
 		super();
 		
+		title = "Jump to line";
 		description = "Jump to line";
 		line = new FLInt(0);
 	}

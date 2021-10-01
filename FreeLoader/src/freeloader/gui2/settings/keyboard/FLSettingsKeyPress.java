@@ -49,7 +49,7 @@ public class FLSettingsKeyPress extends FLSettingsKeyboard {
 	
 
 	@Override
-	public JPanel draw() {
+	protected JPanel draw() {
 		
 			// Get values
 		FLActionKeyPress act = (FLActionKeyPress) context.get("action");
