@@ -27,7 +27,7 @@ public class FLWindowActionList extends FLGUIComponent {
 	@SuppressWarnings("unchecked")
 	@Override
 	public JPanel draw() {
-		actionIndex = 0;
+		actionIndex = -1;
 		
 		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
 		JPanel container = FLGUIUtilities.createBorderedContainer();
@@ -72,7 +72,7 @@ public class FLWindowActionList extends FLGUIComponent {
 	public void removeAction() {
 		ArrayList<FLRobotAction> acts = (ArrayList<FLRobotAction>) context.get("actions");
 		
-		if( acts.size() <= 0 ) return;
+		if( acts.size() <= 0 || actionIndex < 0 ) return;
 		
 		acts.remove(actionIndex);
 		

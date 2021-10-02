@@ -33,7 +33,7 @@ public class FLWindowSettingsWrapper extends FLGUIComponent {
 		// Reference to the "saving" button
 	private JButton btnSave;
 	
-		// Operation being performed on the underyling action
+		// Operation being performed on the underlying action
 	private int state;
 	
 	
@@ -89,8 +89,17 @@ public class FLWindowSettingsWrapper extends FLGUIComponent {
 			FLWindowTab host = (FLWindowTab) context.get("host");
 			FLRobot		bot  = (FLRobot)	 context.get("robot");
 			
-			bot.getRobotContext().actions.add(host.getActionList().getActionIndex() + 1, settingsPane.getUnderlyingAction());
+			int ind = host.getActionList().getActionIndex();
+			int max = bot.getRobotContext().actions.size();
+			
+			if( ind == -1 ) ind = max;
+			else ind++;
+			
+			bot.getRobotContext().actions.add(Math.min(max, ind), settingsPane.getUnderlyingAction());
 			host.getActionList().render();
+			
+			action = null;
+			render();
 		}
 	}
 }

@@ -2,6 +2,7 @@ package freeloader.gui2.window;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -33,6 +34,8 @@ public class FLWindowTabs extends FLGUIComponent {
 		ArrayList<FLRobot> bots = (ArrayList<FLRobot>) context.get("robots");
 		
 		JPanel container = FLGUIUtilities.createBorderedContainer();
+		
+		if( bots == null || bots.size() <= 0 ) return container;
 		
 			// Add tabs for all the robots
 		JTabbedPane tp = new JTabbedPane();
@@ -78,9 +81,11 @@ public class FLWindowTabs extends FLGUIComponent {
 		// Adds a new robot
 	@SuppressWarnings("unchecked")
 	public void addRobot() {
+		String name = (String) JOptionPane.showInputDialog("Enter robot name:");
+		
 		ArrayList<FLRobot> bots = (ArrayList<FLRobot>) context.get("robots");
 		FLRobot bot = new FLRobot();
-		bot.setName("test name");
+		bot.setName(name);
 		selectedRobotIndex = bots.size();
 		bots.add(bot);
 		render();

@@ -54,8 +54,8 @@ public class FLWindow extends FLGUIComponent {
 		
 			// Tabs
 		ArrayList<FLRobot> robots = new ArrayList<FLRobot>();
-		int n_bots = (int) (Math.random() * 4.9999) + 1;
-		for( int i = 0; i < n_bots; i++ ) robots.add(DEBUGgenerateRandomRobot());
+		/*int n_bots = (int) (Math.random() * 4.9999) + 1;
+		for( int i = 0; i < n_bots; i++ ) robots.add(DEBUGgenerateRandomRobot());*/
 		
 		FLGUIContext ctxt_tabs = new FLGUIContext();
 		ctxt_tabs.put("robots", robots);
