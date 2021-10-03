@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import freeloader.gui.settings.FLNullAction;
 import freeloader.gui.settings.FLSettings;
 import freeloader.gui.settings.FLSettingsExec;
+import freeloader.gui.settings.FLSettingsJump;
 import freeloader.gui.settings.FLSettingsNewAction;
 import freeloader.gui.settings.FLSettingsWait;
 import freeloader.gui.settings.keyboard.FLSettingsKeyHold;
@@ -21,6 +22,7 @@ import freeloader.gui.settings.mouse.FLSettingsMouseMove;
 import freeloader.gui.settings.mouse.FLSettingsMouseRelease;
 import freeloader.gui.settings.mouse.FLSettingsMouseScroll;
 import freeloader.robot.actions.FLActionExec;
+import freeloader.robot.actions.FLActionJump;
 import freeloader.robot.actions.FLActionWait;
 import freeloader.robot.actions.FLRobotAction;
 import freeloader.robot.actions.keyboard.FLActionKeyHold;
@@ -69,6 +71,7 @@ public class FLGUIUtilities {
 		if( src instanceof FLActionKeyRelease 	) 	return new FLSettingsKeyRelease		(ctxt);
 		if( src instanceof FLActionWait 		) 	return new FLSettingsWait			(ctxt);
 		if( src instanceof FLActionExec 		) 	return new FLSettingsExec			(ctxt);
+		if( src instanceof FLActionJump 		)	return new FLSettingsJump			(ctxt);
 		
 		if( src instanceof FLNullAction 		)	return new FLSettingsNewAction		(ctxt);
 		

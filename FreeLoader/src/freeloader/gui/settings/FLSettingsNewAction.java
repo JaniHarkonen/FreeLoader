@@ -11,6 +11,7 @@ import freeloader.gui.FLGUIContext;
 import freeloader.gui.FLGUIUtilities;
 import freeloader.gui.sub.FLSubDropDownMenu;
 import freeloader.robot.actions.FLActionExec;
+import freeloader.robot.actions.FLActionJump;
 import freeloader.robot.actions.FLActionWait;
 import freeloader.robot.actions.FLRobotAction;
 import freeloader.robot.actions.keyboard.FLActionKeyHold;
@@ -42,8 +43,9 @@ public class FLSettingsNewAction extends FLSettings {
 			new FLSettingActionBundle(new FLActionKeyHold()),
 			new FLSettingActionBundle(new FLActionKeyRelease()),
 			
-			new FLSettingActionBundle(new FLActionExec()),
-			new FLSettingActionBundle(new FLActionWait())
+			new FLSettingActionBundle(new FLActionWait()),
+			new FLSettingActionBundle(new FLActionJump()),
+			new FLSettingActionBundle(new FLActionExec())
 	};
 	
 	
