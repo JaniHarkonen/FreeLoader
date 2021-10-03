@@ -1,6 +1,6 @@
 package freeloader;
 
-import freeloader.gui2.FLWindow;
+import freeloader.gui.FLWindow;
 
 /**
  * Contains the 'main'- method of FreeLoader.

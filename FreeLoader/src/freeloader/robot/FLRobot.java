@@ -30,10 +30,9 @@ public class FLRobot {
 	}
 	
 	
-		// Runs the robot executing all actions
+		// Runs the robot executing all actions starting from current
+		// action line
 	public void run() {
-		actionLine = 0;
-		
 		int end = context.actions.size();
 		while( actionLine < end )
 		{
@@ -42,9 +41,20 @@ public class FLRobot {
 		}
 	}
 	
+		// Runs the robot starting from the first action
+	public void runFromStart() {
+		gotoLine(0);
+		run();
+	}
+	
 		// Jumps to a given action
 	public void gotoLine(int line) {
 		actionLine = line;
+	}
+	
+		// Returns the line of the current action
+	public int getLine() {
+		return actionLine;
 	}
 	
 		// Returns this robot's RobotContext
