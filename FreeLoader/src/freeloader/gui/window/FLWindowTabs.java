@@ -86,6 +86,9 @@ public class FLWindowTabs extends FLGUIComponent {
 		if( name == null || name.equals("") ) return;
 		
 		ArrayList<FLRobot> bots = (ArrayList<FLRobot>) context.get("robots");
+		
+		if( robotExists(name) ) return;
+		
 		FLRobot bot = new FLRobot();
 		bot.setName(name);
 		selectedRobotIndex = bots.size();
@@ -109,5 +112,17 @@ public class FLWindowTabs extends FLGUIComponent {
 		// Removes selected robot action from the currently open robot
 	public void removeAction() {
 		selectedRobotTab.removeAction();
+	}
+	
+	
+		// Checks whether a robot with given name already exists
+	@SuppressWarnings("unchecked")
+	private boolean robotExists(String name) {
+		if( name == null ) return false;
+		
+		for( FLRobot bot : (ArrayList<FLRobot>) context.get("robots") )
+		if( bot.getName().equals(name) ) return true;
+		
+		return false;
 	}
 }
