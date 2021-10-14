@@ -3,6 +3,7 @@ package freeloader.robot;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import freeloader.robot.actions.FLRobotAction;
 
@@ -15,10 +16,10 @@ public class FLRobot {
 	private int actionLine;
 	
 		// Whether the robot is currently running
-	private boolean isRunning;
+	private AtomicBoolean isRunning;
 	
 		// Whether the endless loop should be stopped (multi-threading only)
-	private boolean isTerminated;
+	private AtomicBoolean isTerminated;
 	
 		// Name of the robot
 	private String name;
@@ -33,8 +34,9 @@ public class FLRobot {
 		
 		actionLine = -1;
 		name = "Robot";
-		isRunning = false;
-		isTerminated = true;
+		
+		isRunning = new AtomicBoolean(false);
+		isTerminated = new AtomicBoolean(true);
 	}
 	
 		// Runs the robot executing all actions starting from current
@@ -42,13 +44,13 @@ public class FLRobot {
 	public void run() {
 		int end = context.actions.size();
 		
-		while( isRunning == true && actionLine < end )
+		while( isRunning.get() == true && actionLine < end )
 		tick();
 	}
 	
 		// Runs the robot in an endless loop (useful when multi-threading)
 	public void loop() {
-		while( isTerminated == false )
+		while( isTerminated.get() == false )
 		run();
 	}
 	
@@ -61,24 +63,24 @@ public class FLRobot {
 		// Runs the robot starting from the first action
 	public void start() {
 		gotoLine(-1);
-		isRunning = true;
-		isTerminated = false;
+		isRunning.set(true);
+		isTerminated.set(false);
 		run();
 	}
 	
 		// Resumes the robot
 	public void resume() {
-		isRunning = true;
+		isRunning.set(true);
 	}
 	
 		// Stops the execution of the robot
 	public void stop() {
-		isRunning = false;
+		isRunning.set(false);
 	}
 	
 		// Terminates the endless loop (useful when multi-threading)
 	public void terminate() {
-		isTerminated = true;
+		isTerminated.set(true);
 	}
 	
 		// Jumps to a given action
@@ -113,11 +115,11 @@ public class FLRobot {
 	
 		// Returns whether the robot is running
 	public boolean checkRunning() {
-		return isRunning;
+		return isRunning.get();
 	}
 	
 		// Returns whether the robot has been terminated
 	public boolean checkTerminated() {
-		return isTerminated;
+		return isTerminated.get();
 	}
 }

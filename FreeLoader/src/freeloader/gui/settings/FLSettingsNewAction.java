@@ -58,10 +58,6 @@ public class FLSettingsNewAction extends FLSettings {
 	
 	@Override
 	protected JPanel draw() {
-		
-			// Actions available for selection
-		
-		
 		JPanel container = createSettingsContainer();
 		
 			// Robot action selection

@@ -46,7 +46,11 @@ public class FLSettingsWait extends FLSettings {
 			// Variables to be saved
 		int v_wait = Integer.parseInt(ifWaitDuration.textField.getText());
 		
+		if( v_wait < 1 ) return;
+		
 			// Save changes
 		f_wait.setValue(v_wait);
+		
+		act.updateDescription();
 	}
 }

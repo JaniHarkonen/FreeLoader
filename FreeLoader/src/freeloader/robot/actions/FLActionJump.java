@@ -8,12 +8,15 @@ public class FLActionJump extends FLRobotAction {
 		// Action line to jump to
 	private FLInt line;
 	
+		// String to be added in front of the description
+	private String descriptionPrefix;
+	
 	
 	public FLActionJump() {
 		super();
 		
 		title = "Jump to line";
-		description = "Jump to line";
+		descriptionPrefix = "Jump to line";
 		line = new FLInt(0);
 	}
 	
@@ -27,5 +30,10 @@ public class FLActionJump extends FLRobotAction {
 		// Returns a reference to the line FLInt
 	public FLInt getLine() {
 		return line;
+	}
+	
+		// Updates the action description
+	public void updateDescription() {
+		setDescription(descriptionPrefix + " " + (line.getUnmoddedValue() + 1));
 	}
 }

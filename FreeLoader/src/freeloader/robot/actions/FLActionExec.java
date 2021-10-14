@@ -1,5 +1,6 @@
 package freeloader.robot.actions;
 
+import java.io.File;
 import java.io.IOException;
 
 import freeloader.robot.FLRobotContext;
@@ -9,12 +10,15 @@ public class FLActionExec extends FLRobotAction {
 		// Path of the program that should be ran
 	private String path;
 	
+		// Description prefix
+	private String descriptionPrefix;
+	
 	
 	public FLActionExec() {
 		super();
 		
 		title = "Run program";
-		description = "Run program";
+		descriptionPrefix = "Run program";
 		path = "";
 	}
 	
@@ -40,5 +44,12 @@ public class FLActionExec extends FLRobotAction {
 		// Returns the path of the program to be run
 	public String getPath() {
 		return path;
+	}
+	
+		// Updates the action description
+	public void updateDescription() {
+		File f = new File(path);
+		System.out.println("here: " + f.getName());
+		setDescription(descriptionPrefix + " " + f.getName());
 	}
 }

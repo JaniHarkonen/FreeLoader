@@ -23,7 +23,7 @@ public class FLSettingsJump extends FLSettings {
 	public JPanel draw() {
 			// Get values
 		FLActionJump act = (FLActionJump) context.get("action");
-		int v_jump = act.getLine().getUnmoddedValue();
+		int v_jump = act.getLine().getUnmoddedValue() + 1;
 		
 		JPanel container = createSettingsContainer();
 		
@@ -44,9 +44,13 @@ public class FLSettingsJump extends FLSettings {
 		FLInt f_jump = act.getLine();
 		
 			// Variables to be saved
-		int v_jump = Integer.parseInt(ifActionLine.textField.getText());
+		int v_jump = Integer.parseInt(ifActionLine.textField.getText()) - 1;
+		
+		if( v_jump < 0 ) return;
 		
 			// Save changes
 		f_jump.setValue(v_jump);
+		
+		act.updateDescription();
 	}
 }

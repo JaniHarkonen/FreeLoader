@@ -47,5 +47,7 @@ public class FLSettingsExec extends FLSettings {
 		
 			// Save changes
 		act.setPath(v_path);
+		
+		act.updateDescription();
 	}
 }

@@ -26,7 +26,6 @@ public abstract class FLMouseButton extends FLRobotAction {
 	
 	@Override
 	public void perform(FLRobotContext rc) {
-		
 	}
 	
 		// Sets the mouse button to listen to (from InputEvent)
