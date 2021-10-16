@@ -23,8 +23,7 @@ public class FLRobotManager {
 	private static final Map<String, FLRobotManagerEntry> robots = new HashMap<String, FLRobotManagerEntry>();
 
 		// DO NOT instantiate
-	private FLRobotManager() {
-	}
+	private FLRobotManager() {}
 	
 	
 		/**

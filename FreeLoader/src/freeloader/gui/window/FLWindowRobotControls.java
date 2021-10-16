@@ -34,7 +34,7 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		JButton btn_run;
 		
 			// Run/resume robot
-		if( bot.checkTerminated() )
+		if( bot.getState() == FLRobot.STATE_TERMINATED )
 		btn_run = createButton("Run", () -> { onRun(); });
 		else
 		btn_run = createButton("Resume", () -> { onResume(); });
@@ -57,7 +57,7 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		line_ctrl.add(btn_run);
 		FLGUIUtilities.addEmptySpace(line_ctrl, 12);
 		
-		if( bot.checkTerminated() )
+		if( bot.getState() == FLRobot.STATE_TERMINATED )
 		{
 			line_ctrl.add(btn_run_sel);
 			FLGUIUtilities.addEmptySpace(line_ctrl, 12);
