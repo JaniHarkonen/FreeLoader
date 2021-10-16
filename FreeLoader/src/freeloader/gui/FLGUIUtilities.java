@@ -16,6 +16,7 @@ import freeloader.gui.settings.FLSettingsWait;
 import freeloader.gui.settings.keyboard.FLSettingsKeyHold;
 import freeloader.gui.settings.keyboard.FLSettingsKeyPress;
 import freeloader.gui.settings.keyboard.FLSettingsKeyRelease;
+import freeloader.gui.settings.keyboard.FLSettingsType;
 import freeloader.gui.settings.mouse.FLSettingsMouseClick;
 import freeloader.gui.settings.mouse.FLSettingsMouseHold;
 import freeloader.gui.settings.mouse.FLSettingsMouseMove;
@@ -28,6 +29,7 @@ import freeloader.robot.actions.FLRobotAction;
 import freeloader.robot.actions.keyboard.FLActionKeyHold;
 import freeloader.robot.actions.keyboard.FLActionKeyPress;
 import freeloader.robot.actions.keyboard.FLActionKeyRelease;
+import freeloader.robot.actions.keyboard.FLActionType;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.mouse.FLActionMouseHold;
 import freeloader.robot.actions.mouse.FLActionMouseMove;
@@ -72,6 +74,7 @@ public class FLGUIUtilities {
 		if( src instanceof FLActionWait 		) 	return new FLSettingsWait			(ctxt);
 		if( src instanceof FLActionExec 		) 	return new FLSettingsExec			(ctxt);
 		if( src instanceof FLActionJump 		)	return new FLSettingsJump			(ctxt);
+		if( src instanceof FLActionType			)	return new FLSettingsType			(ctxt);
 		
 		if( src instanceof FLNullAction 		)	return new FLSettingsNewAction		(ctxt);
 		

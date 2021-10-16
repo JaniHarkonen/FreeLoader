@@ -17,6 +17,7 @@ import freeloader.robot.actions.FLRobotAction;
 import freeloader.robot.actions.keyboard.FLActionKeyHold;
 import freeloader.robot.actions.keyboard.FLActionKeyPress;
 import freeloader.robot.actions.keyboard.FLActionKeyRelease;
+import freeloader.robot.actions.keyboard.FLActionType;
 import freeloader.robot.actions.mouse.FLActionMouseClick;
 import freeloader.robot.actions.mouse.FLActionMouseHold;
 import freeloader.robot.actions.mouse.FLActionMouseMove;
@@ -39,6 +40,7 @@ public class FLSettingsNewAction extends FLSettings {
 			new FLSettingActionBundle(new FLActionMouseRelease()),
 			new FLSettingActionBundle(new FLActionMouseScroll()),
 			
+			new FLSettingActionBundle(new FLActionType()),
 			new FLSettingActionBundle(new FLActionKeyPress()),
 			new FLSettingActionBundle(new FLActionKeyHold()),
 			new FLSettingActionBundle(new FLActionKeyRelease()),

@@ -53,12 +53,13 @@ public class FLRobotManager {
 		
 		if( me == null )
 		{
+			robot.gotoLine(line);
+			robot.resume();
+			
 			Thread t = new Thread() {
 				
 				@Override
 				public void run() {
-					robot.gotoLine(line);
-					robot.start();
 					robot.loop();
 				}
 			};
@@ -70,6 +71,7 @@ public class FLRobotManager {
 		else
 		{
 			me.robot.gotoLine(line);
+			me.robot.resume();
 			me.thread.start();
 		}
 	}

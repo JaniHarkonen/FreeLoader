@@ -71,6 +71,7 @@ public class FLRobot {
 		// Resumes the robot
 	public void resume() {
 		isRunning.set(true);
+		isTerminated.set(false);
 	}
 	
 		// Stops the execution of the robot

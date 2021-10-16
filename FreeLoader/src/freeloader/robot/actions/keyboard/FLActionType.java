@@ -15,6 +15,9 @@ public class FLActionType extends FLRobotAction {
 		// Text to type
 	private String text;
 	
+		// Clipboard instance used to store the text that will be typed
+	private Clipboard clipboard;
+	
 		// Whether to type characters one-by-one
 	private boolean enableOneByOne;
 	
@@ -34,6 +37,8 @@ public class FLActionType extends FLRobotAction {
 		enableOneByOne = false;
 		intervalCharacter = new FLInt(0);
 		intervalWord = new FLInt(0);
+		clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		updateClipboardText();
 	}
 	
 	
@@ -45,11 +50,6 @@ public class FLActionType extends FLRobotAction {
 		
 		if( !enableOneByOne )
 		{
-				// Place the text into the clipboard
-			StringSelection ss = new StringSelection(text);
-			Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
-			cb.setContents(ss, ss);
-			
 				// Paste the text
 			bot.keyPress(KeyEvent.VK_CONTROL);
 			bot.keyPress(KeyEvent.VK_V);
@@ -61,5 +61,24 @@ public class FLActionType extends FLRobotAction {
 				// Types the text in by pressing each individual key
 			// TO BE DONE :/
 		}
+	}
+	
+		// Updates the clipboard instance with the latest text
+	private void updateClipboardText() {
+		StringSelection ss = new StringSelection(text);
+		clipboard.setContents(ss, ss);
+	}
+	
+	
+		// Returns the text that is to be typed
+	public String getText() {
+		return text;
+	}
+	
+		// Sets the text that is to be typed
+	public void setText(String text) {
+		this.text = text;
+		System.out.println("text: " + text);
+		updateClipboardText();
 	}
 }
