@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import freeloader.gui.window.FLWindowTabs;
 import freeloader.gui.window.FLWindowToolbar;
@@ -62,6 +63,7 @@ public class FLWindow extends FLGUIComponent {
 		MAIN_WINDOW.add(container);
 		MAIN_WINDOW.setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		MAIN_WINDOW.setVisible(true);
+		MAIN_WINDOW.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		return null;
 	}
 }
