@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import freeloader.gui.FLGUIComponent;
 import freeloader.gui.FLGUIContext;
 import freeloader.gui.FLGUIUtilities;
-import freeloader.gui.robotmanager.FLRobotManager;
 import freeloader.robot.FLRobot;
 
 public class FLWindowRobotControls extends FLGUIComponent {
@@ -94,7 +93,16 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		
 		if( robot == null ) return;
 		
-		FLRobotManager.startRobot(robot.getName(), robot);
+		
+		Thread t = new Thread() {
+			
+			@Override
+			public void run() {
+				robot.start();
+			}
+		};
+		
+		t.start();
 		render();
 	}
 	
@@ -105,7 +113,15 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		if( robot == null ) return;
 		if( line < 0 || line >= robot.getRobotContext().actions.size() ) return;
 		
-		FLRobotManager.startRobotFromLine(robot.getName(), robot, line);
+		Thread t = new Thread() {
+			
+			@Override
+			public void run() {
+				robot.start(line);
+			}
+		};
+		
+		t.start();
 		render();
 	}
 	
@@ -115,7 +131,7 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		
 		if( robot == null ) return;
 		
-		FLRobotManager.resumeRobot(robot.getName());
+		robot.resume();
 		render();
 	}
 	
@@ -125,7 +141,7 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		
 		if( robot == null ) return;
 		
-		FLRobotManager.pauseRobot(robot.getName());
+		robot.pause();
 		render();
 	}
 	
@@ -135,7 +151,14 @@ public class FLWindowRobotControls extends FLGUIComponent {
 		
 		if( robot == null ) return;
 		
-		FLRobotManager.stopRobot(robot.getName());
+		robot.stop();
+		
+		try
+		{
+			Thread.sleep(100);
+		}
+		catch (InterruptedException e) { e.printStackTrace(); }
+		
 		render();
 	}
 }

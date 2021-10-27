@@ -23,7 +23,7 @@ public class FLActionJump extends FLRobotAction {
 	
 	@Override
 	public void perform(FLRobotContext rc) {
-		rc.getOwner().gotoLine(line.getValue(rc) - 1);
+		rc.getOwner().gotoLine(line.getValue(rc));
 	}
 	
 	

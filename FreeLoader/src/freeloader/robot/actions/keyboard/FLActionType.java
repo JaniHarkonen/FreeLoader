@@ -38,7 +38,6 @@ public class FLActionType extends FLRobotAction {
 		intervalCharacter = new FLInt(0);
 		intervalWord = new FLInt(0);
 		clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		updateClipboardText();
 	}
 	
 	
@@ -50,6 +49,7 @@ public class FLActionType extends FLRobotAction {
 		
 		if( !enableOneByOne )
 		{
+			updateClipboardText();
 				// Paste the text
 			bot.keyPress(KeyEvent.VK_CONTROL);
 			bot.keyPress(KeyEvent.VK_V);
@@ -78,7 +78,6 @@ public class FLActionType extends FLRobotAction {
 		// Sets the text that is to be typed
 	public void setText(String text) {
 		this.text = text;
-		System.out.println("text: " + text);
 		updateClipboardText();
 	}
 }

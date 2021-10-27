@@ -4,6 +4,8 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import freeloader.robot.actions.FLRobotAction;
+
 public class FLRobot {
 	
 		// Constants for managing robot state
@@ -36,22 +38,35 @@ public class FLRobot {
 		actionLine = -1;
 		name = "Robot";
 		
-		state.set(FLRobot.STATE_TERMINATED);
+		state = new AtomicInteger(FLRobot.STATE_TERMINATED);
 	}
 	
 		// Continuous loop that will execute the robot actions and
 		// idle when done
 	private void loop() {
-		while( getState() != STATE_TERMINATED )
+		int cs = getState();
+		
+		while( cs != STATE_TERMINATED )
 		{
-			int end = context.actions.size();
-			while( getState() == STATE_RUNNING && actionLine < end )
-			{
-				context.actions.get(actionLine).perform(context);
-				actionLine ++;
-			}
+			cs = getState();
 			
-			setState(STATE_FINISHED);
+			int paused = getState();
+			int end = context.actions.size();
+			
+			while( paused == STATE_RUNNING )
+			{
+				if( actionLine >= end )
+				{
+					stop();
+					break;
+				}
+				
+				FLRobotAction act = context.actions.get(actionLine);
+				actionLine ++;
+				act.perform(context);
+				
+				paused = getState();
+			}
 		}
 	}
 	
@@ -84,7 +99,7 @@ public class FLRobot {
 	
 		// Moves the execution to a given line
 	public void gotoLine(int line) {
-		if( line < 0 || line > context.actions.size() - 1 ) return;
+		if( line < 0 || line >= context.actions.size() ) return;
 		
 		actionLine = line;
 	}
