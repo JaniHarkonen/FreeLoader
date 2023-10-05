@@ -99,18 +99,25 @@ public class FLWindowTabs extends FLGUIComponent {
 		// Deletes currently open robot
 	@SuppressWarnings("unchecked")
 	public void deleteRobot() {
-		((ArrayList<FLRobot>) context.get("robots")).remove(selectedRobotIndex);
+	    ArrayList<FLRobot> robotList = ((ArrayList<FLRobot>) context.get("robots"));
+	    
+	    if( robotList == null || selectedRobotIndex >= robotList.size() )
+        return;
+	    
+		robotList.remove(selectedRobotIndex);
 		selectedRobotIndex = Math.max(0, selectedRobotIndex - 1);
 		render();
 	}
 	
 		// Opens up an action addition panel
 	public void addAction() {
+	    if( selectedRobotTab != null )
 		selectedRobotTab.addAction();
 	}
 	
 		// Removes selected robot action from the currently open robot
 	public void removeAction() {
+	    if( selectedRobotTab != null )
 		selectedRobotTab.removeAction();
 	}
 	
